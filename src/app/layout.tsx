@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 // import './globals.css'
 import StyledComponentsRegistry from "../lib/AntdRegistry";
 import { Providers } from "../store/storeProvider";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,14 @@ export default function RootLayout({
       <body className={inter.className}>
         {" "}
         <StyledComponentsRegistry>
-          <Providers>{children}</Providers>
+          <>
+            <div style={{ marginLeft: "10px" }}>
+              <Link href="/">Home</Link>
+              <Link href="/posts">Posts</Link>
+              <Link href="/redux">Redux Counter</Link>
+            </div>
+            <Providers>{children}</Providers>
+          </>
         </StyledComponentsRegistry>
       </body>
     </html>
