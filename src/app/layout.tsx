@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 // import './globals.css'
-import StyledComponentsRegistry from "../lib/AntdRegistry";
+import ThemeRegistry from "../lib/MuiRegistry";
 import { Providers } from "../store/storeProvider";
 import Link from "next/link";
 
@@ -21,16 +21,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {" "}
-        <StyledComponentsRegistry>
+        <ThemeRegistry options={{ key: "mui" }}>
+          {" "}
           <>
-            <div style={{ marginLeft: "10px" }}>
+            <div style={{ display: "flex", justifyContent: "space-evenly" }}>
               <Link href="/">Home</Link>
               <Link href="/posts">Posts</Link>
               <Link href="/redux">Redux Counter</Link>
+              <Link href="/mui">Mui</Link>
+              <Link href="/ag-grid">AG Grid</Link>
             </div>
             <Providers>{children}</Providers>
           </>
-        </StyledComponentsRegistry>
+        </ThemeRegistry>
       </body>
     </html>
   );
