@@ -33,7 +33,11 @@ export type Business = {
   };
   [key: string]: any;
 };
-export type Industry = { industryId: string; primary?: string; isNew?: boolean };
+export type Industry = {
+  industryId: string;
+  primary?: string;
+  isNew?: boolean;
+};
 export type BusinessAddress = {
   country?: string;
   city?: string;

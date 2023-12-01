@@ -1,6 +1,8 @@
 import { SubscriptionPlans } from "./SubscriptionPlans";
 
-export const ACCOUNT_TYPES: string[] = SubscriptionPlans.map((plan) => plan.type);
+export const ACCOUNT_TYPES: string[] = SubscriptionPlans.map(
+  (plan) => plan.type,
+);
 export const ACCOUNT_STATUSES: string[] = [
   "active",
   "suspended",

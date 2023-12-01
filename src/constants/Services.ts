@@ -10,9 +10,12 @@ export const SERVICES = {
 };
 
 export const SERVICES_FALLBACK: { [key: string]: string } = {
-  "/api/account-service-url": "https://lv86m63el7.execute-api.us-west-2.amazonaws.com/Prod/",
-  "/api/business-service-url": "https://lv86m63el7.execute-api.us-west-2.amazonaws.com/Prod/",
-  "/api/chat-service-url": "https://lv86m63el7.execute-api.us-west-2.amazonaws.com/Prod/",
+  "/api/account-service-url":
+    "https://lv86m63el7.execute-api.us-west-2.amazonaws.com/Prod/",
+  "/api/business-service-url":
+    "https://lv86m63el7.execute-api.us-west-2.amazonaws.com/Prod/",
+  "/api/chat-service-url":
+    "https://lv86m63el7.execute-api.us-west-2.amazonaws.com/Prod/",
   "/api/files": "https://x5w7ssyu5l.execute-api.us-west-2.amazonaws.com/Stage/",
   "/api/notification-service-url/manually-deployed":
     "wss://exccym1176.execute-api.us-west-2.amazonaws.com/dev",

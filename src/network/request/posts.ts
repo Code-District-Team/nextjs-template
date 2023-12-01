@@ -18,7 +18,7 @@ export default class PostRequest extends Request {
       K.Network.Method.GET,
       null,
       K.Network.Header.Type.Json,
-      {}
+      {},
       // auth.loggedInUser?.token
     );
   }

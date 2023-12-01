@@ -14,7 +14,7 @@ export default class Request {
     body = null,
     defaultHeaderType = K.Network.Header.Type.Json,
     headers = {},
-    token = null
+    token = null,
   ) {
     const state = store.getState();
     // const { auth } = state;
