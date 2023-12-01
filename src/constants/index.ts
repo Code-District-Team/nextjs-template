@@ -2,7 +2,7 @@ import NetworkConstants from "./networkConstants";
 export * from "./auth";
 export * from "./badges";
 export * from "./common";
-export * from "./rountries";
+export * from "./countries";
 export * from "./countryCodes";
 export * from "./enums/appModules";
 export * from "./enums/findBusinessState";
