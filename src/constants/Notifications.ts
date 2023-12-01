@@ -1,4 +1,4 @@
-import { SETTINGS_ICON_URL } from "@/constants/paths";
+import { SETTINGS_ICON_URL } from "@/constants/Paths";
 
 export const NOTIFICATIONS_TYPES = {
   BUSINESS_CARD_ACCEPTED: "BUSINESS_CARD_ACCEPTED",
