@@ -1,4 +1,4 @@
-import { CustomError } from "@/types/Http/Error";
+import { CustomError } from "@/types/Http/error";
 
 export type APIResponse<T> = {
   error: CustomError;

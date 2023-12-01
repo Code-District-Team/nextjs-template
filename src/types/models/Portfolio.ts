@@ -1,4 +1,4 @@
-import { User } from "@/types/models/User";
+import { User } from "@/types/models/user";
 
 export type PortfolioBoard = {
   _id: string;

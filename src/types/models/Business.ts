@@ -1,4 +1,4 @@
-import { Picture } from "../common/Picture";
+import { Picture } from "../common/picture";
 
 export type Business = {
   businessId: string;

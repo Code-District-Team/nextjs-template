@@ -1,5 +1,5 @@
-export * from "./add-admin.type";
-export * from "./admin-activity.type";
+export * from "./addAdmin.type";
+export * from "./adminActivity.type";
 export * from "./administrators.type";
 export * from "./documents.type";
 export * from "./invoices.type";

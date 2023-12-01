@@ -1,5 +1,5 @@
-import { Channel } from "@/types/models/Channel";
-import { User } from "@/types/models/User";
+import { Channel } from "@/types/models/channel";
+import { User } from "@/types/models/user";
 
 export type Post = {
   _id: string;
