@@ -11,6 +11,7 @@ export default class NetworkCall {
     };
 
     if (request.data) {
+      console.log('request data', request.data);
       options.body = JSON.stringify(request.data);
     }
 
