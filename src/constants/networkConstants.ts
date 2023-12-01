@@ -1,13 +1,24 @@
 const BaseImagesURL = process.env.NEXT_PUBLIC_BASE_IMAGES_URL;
+
+const SERVICES = {
+  ACCOUNT: "/api/account-service-url",
+  AREAS: "areas",
+  BUSINESS: "/api/business-service-url",
+  CHAT: "/api/chat-service-url",
+  FILES: "/api/files",
+  NOTIFICATION: "/api/notification-service-url/manually-deployed",
+  SOCKET: "socket",
+  POSTS: "https://jsonplaceholder.typicode.com",
+};
+
 const NetworkConstants = {
   URL: {
     BaseImagesURL,
-
     Client: {
       BaseHost: process.env.NEXT_PUBLIC_CLIENT_BASE_HOST,
       BasePort: process.env.NEXT_PUBLIC_CLIENT_BASE_PORT,
     },
-    posts: "https://jsonplaceholder.typicode.com/posts",
+    posts: `${SERVICES.POSTS}/posts`,
   },
   Method: {
     GET: "GET",
