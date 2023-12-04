@@ -44,9 +44,9 @@
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
-    "@types/braintree": "^3",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
+    "@types/braintree": "^3",
     "@types/jest": "^29.5.10",
     "@types/node": "^20",
     "@types/react": "^18",

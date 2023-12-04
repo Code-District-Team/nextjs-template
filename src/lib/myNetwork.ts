@@ -1,4 +1,4 @@
-import { BusinessItem } from "@/components/MyNetwork/types";
+// import { BusinessItem } from "@/components/MyNetwork/types";
 import {
   DEFAULT_PRIVACY_SETTING,
   MY_NETWORK_MENUS,
@@ -27,7 +27,7 @@ export const setMenusWithBadges = (
   setMenus(MY_NETWORK_MENUS);
 
   // Set the badge value
-  MY_NETWORK_MENUS[0].badge = badge;
+  // MY_NETWORK_MENUS[0].badge = badge; // TODO: need to define MY_NETWORK_MENUS type
   setMenus([...MY_NETWORK_MENUS]);
   // Remove the menus from the header on dismount
   return () => setMenus([]);
@@ -44,7 +44,7 @@ export const useBCardRequestCount = (): string => {
   return data?.count?.toString() ?? "";
 };
 
-type Item = User | BusinessItem;
+type Item = User; //| BusinessItem;
 
 export const handleItemSelection = (item: Item, setSelected: Function) => {
   setSelected((selectedItems: Item[]) => {

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Folder } from "@/components/MyNetwork/types";
+// import { Folder } from "@/components/MyNetwork/types"; // TODO: Define types
 import { BUSINESS_STATUS } from "@/constants";
 import {
   ACCOUNTS_URI,
@@ -10,7 +10,7 @@ import {
 } from "@/constants/services";
 import { useFetch } from "@/hooks/useFetch";
 import { fetcher, query } from "@/lib/https";
-import { t } from "@/pages/_app";
+// import { t } from "@/pages/_app"; // TODO: Need to integrate next-translation
 import {
   APIBulkResponse,
   APIResponse,
@@ -56,14 +56,16 @@ export type moveGroupParamsType = {
 
 // ------- GROUPS -------
 
-const getGroups = (uri: string): APIResponse<Folder[]> => {
+const getGroups = (uri: string): APIResponse<[]> => {
   const { data, error, isLoading, isValidating, mutate } =
     useFetch<GroupResponse>(SERVICES.ACCOUNT, uri, undefined, {
       revalidateOnFocus: false,
     });
-  let folders: Folder[] = [
+  // TODO: Needs to define `Folder` interface and translation to run below code
+  /* let folders: Folder[] = [
     { description: "", groupId: "", groupName: t ? t("loading") : "loading" },
-  ];
+  ]; */
+  let folders: any = [{ description: "", groupId: "", groupName: "loading" }];
 
   if (data) folders = data;
 
@@ -227,12 +229,12 @@ export const getBusinessLeadsInGroup = (
 export const getContactsInGroup = (
   groupId: string,
   { limit = PER_PAGE, page = 0, filters = {} }: businessGroupParamsType,
-): APIResponse<ContactResponse<User[]>> => {
+): APIResponse<ContactResponse> => {
   const url = `${CONTACTS_URI}/entry`;
 
   const body = { groupId, limit, offset: page * limit, ...filters };
 
-  return useFetch<ContactResponse<User[]>>(
+  return useFetch<ContactResponse>(
     SERVICES.ACCOUNT,
     groupId && url,
     {
@@ -245,12 +247,12 @@ export const getContactsInGroup = (
 export const getPeopleInGroup = (
   groupId: string,
   { limit = PER_PAGE, page = 0, filters = {} }: businessGroupParamsType,
-): APIResponse<ContactResponse<User[]>> => {
+): APIResponse<ContactResponse> => {
   const url = `${ACCOUNTS_URI}/entry`;
 
   const body = { groupId, limit, offset: page * limit, ...filters };
 
-  return useFetch<ContactResponse<User[]>>(
+  return useFetch<ContactResponse>(
     SERVICES.ACCOUNT,
     groupId && url,
     {

@@ -1,6 +1,6 @@
 import { xml2js } from "xml-js";
 
-import { getIdToken, logout } from "@/lib/auth";
+// import { getIdToken, logout } from "@/lib/auth";
 import serviceDiscovery from "@/lib/serviceDiscovery";
 import { CustomError, FileSignedUpResponse } from "@/types/http";
 import { MethodTypes } from "@/types/http/methodTypes";
@@ -52,7 +52,7 @@ const handleSuccess = (response: Response, responseJson: any): APIResponse => {
 };
 
 const handleUnauthenticated = (): APIResponse => {
-  logout();
+  // logout(); // TODO: Add logout method after implement auth.ts in lib
   // TODO show session expired message
   return {
     status: 0,
@@ -88,7 +88,8 @@ export async function fetcher(
   };
 
   // Headers to exclude if request is service discovery or without authentication
-  const token = await getIdToken();
+  // const token = await getIdToken(); // TODO: Add getIdToken method after implement auth.ts in lib
+  const token = "auth_token_here";
   if (useToken && !token) return false; // quit if no token
 
   if (SERVICE && useToken && token) {
