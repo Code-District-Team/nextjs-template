@@ -1,5 +1,5 @@
 {
-  "name": "global",
+  "name": "Yoogo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
     "start": "next start",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "next lint",
+    "lint-fix": "next lint --fix",
     "test": "jest --watch",
     "test-all": "jest",
     "snapshot": "jest --updateSnapshot",
@@ -33,6 +34,7 @@
     "jest": "^29.7.0",
     "moment": "^2.29.4",
     "next": "14.0.3",
+    "next13-progressbar": "^1.1.1",
     "prettier": "^3.1.0",
     "react": "^18",
     "react-date-range": "^1.4.0",
@@ -54,6 +56,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "eslint-plugin-eslint-plugin": "^5.1.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "typescript": "^5"
   },

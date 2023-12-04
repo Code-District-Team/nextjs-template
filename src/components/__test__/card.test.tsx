@@ -1,10 +1,11 @@
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import React from "react";
+
 import RecipeReviewCard from "../card";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 test("expands and collapses card content on button click", async () => {
-  render(<RecipeReviewCard />);
-
+  let target = render(<RecipeReviewCard />);
+  expect(target).toMatchSnapshot();
   // Card should start in a collapsed state
   expect(screen.queryByText(/Method:/i)).not.toBeInTheDocument();
 

@@ -1,9 +1,11 @@
 "use client";
 
-import { useDispatch, useSelector } from "react-redux";
-import { increment, decrement } from "../../store/slices/counterSlice";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { RootState } from "@/store";
+
+import { decrement,increment } from "../../store/slices/counterSlice";
 
 export default function Home() {
   //useSelector gets the state from store

@@ -1,6 +1,6 @@
 import K from "../../constants";
-import Request from ".";
 import { store } from "../../store";
+import Request from ".";
 
 export default class PostRequest extends Request {
   constructor(params: any) {

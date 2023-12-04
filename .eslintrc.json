@@ -33,7 +33,32 @@
         "rule": "CamelCase",
         "excepts": ["page", "index"]
       }
-    ]
+    ],
+    "react/sort-comp": [
+      1,
+      {
+        "order": [
+          "static-methods",
+          "state", // Initialize State Variables
+          "refs", // Create Refs
+          "instance-variables", // Use this for hooks and other instance variables
+          "lifecycle", // useEffect can be considered part of lifecycle
+          "everything-else", // This can include const/var/let specific to Component
+          "render"
+        ],
+        "groups": {
+          "lifecycle": [
+            "componentDidMount",
+            "shouldComponentUpdate",
+            "componentDidUpdate",
+            "componentWillUnmount"
+            // Other lifecycle methods can be added here
+          ]
+        }
+      }
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
     // "eslint-plugin-eslint-plugin/order-in-components": [
     //   "error",
     //   {
@@ -53,7 +78,12 @@
     //   }
     // ]
   },
-  "plugins": ["jest", "eslint-plugin-jest", "filenames-simple"],
+  "plugins": [
+    "jest",
+    "eslint-plugin-jest",
+    "filenames-simple",
+    "simple-import-sort"
+  ],
   "env": {
     "jest/globals": true,
     "jest": true
