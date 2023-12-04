@@ -28,12 +28,30 @@
       }
     ],
     "filenames-simple/naming-convention": [
-      "error",
+      0,
       {
         "rule": "CamelCase",
         "excepts": ["page", "index"]
       }
     ]
+    // "eslint-plugin-eslint-plugin/order-in-components": [
+    //   "error",
+    //   {
+    //     "groups": [
+    //       "state",
+    //       "refs",
+    //       "hooks",
+    //       "useEffects",
+    //       "constants",
+    //       "functions",
+    //       "render"
+    //     ],
+    //     "alphabetize": {
+    //       "order": "asc",
+    //       "caseInsensitive": true
+    //     }
+    //   }
+    // ]
   },
   "plugins": ["jest", "eslint-plugin-jest", "filenames-simple"],
   "env": {
