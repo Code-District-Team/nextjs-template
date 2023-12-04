@@ -5,12 +5,13 @@ import {
   PAUSE,
   PERSIST,
   persistReducer,
+  persistStore,
   PURGE,
   REGISTER,
   REHYDRATE,
-  persistStore,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+
 import counterReducer from "./slices/counterSlice";
 
 const rootReducer = combineReducers({

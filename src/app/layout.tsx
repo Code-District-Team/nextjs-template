@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
+
 // import './globals.css'
 import ThemeRegistry from "../lib/muiRegistry";
 import { Providers } from "../store/storeProvider";
-import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -8,6 +8,7 @@
     "start": "next start",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "next lint",
+    "lint-fix": "next lint --fix",
     "test": "jest --watch",
     "test-all": "jest",
     "snapshot": "jest --updateSnapshot",
@@ -50,6 +51,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "eslint-plugin-eslint-plugin": "^5.1.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "typescript": "^5"
   }
