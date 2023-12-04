@@ -5,7 +5,6 @@ import Link from "next/link";
 // import './globals.css'
 import ThemeRegistry from "../lib/muiRegistry";
 import { Providers } from "../store/storeProvider";
-import ProgressBarProvider from "@/components/progressBarProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,9 +32,7 @@ export default function RootLayout({
               <Link href="/mui">Mui</Link>
               <Link href="/ag-grid">AG Grid</Link>
             </div>
-            <Providers>
-              <ProgressBarProvider>{children}</ProgressBarProvider>
-            </Providers>
+            <Providers>{children}</Providers>
           </>
         </ThemeRegistry>
       </body>
