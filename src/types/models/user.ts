@@ -7,7 +7,7 @@ import {
   BusinessAddress,
   BusinessAdmin,
   BusinessSocialMediaLinks,
-} from "@/types/models/Business";
+} from "@/types/models/business";
 
 export type User = Contact &
   SocialMediaLinks &

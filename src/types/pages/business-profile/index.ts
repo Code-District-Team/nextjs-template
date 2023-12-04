@@ -1,1 +1,1 @@
-export * from "./business-profile.type";
+export * from "./businessProfile.type";

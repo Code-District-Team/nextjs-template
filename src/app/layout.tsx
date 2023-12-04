@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 // import './globals.css'
-import ThemeRegistry from "../lib/MuiRegistry";
+import ThemeRegistry from "../lib/muiRegistry";
 import { Providers } from "../store/storeProvider";
 import Link from "next/link";
 

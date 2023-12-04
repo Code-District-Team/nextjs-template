@@ -1,4 +1,4 @@
-import RegistrationStages from "@/constants/enums/registration_stages";
+import RegistrationStages from "@/constants/enums/registrationStages";
 
 export const PLANS = {
   BASIC: "basic",

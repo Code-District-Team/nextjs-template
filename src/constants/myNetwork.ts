@@ -4,7 +4,7 @@ import {
   BUSINESS_LEADS_URI,
   BUSINESSES_URI,
   CONTACTS_URI,
-} from "@/constants/Services";
+} from "@/constants/services";
 // import { Menu } from "@/store";
 
 export const MY_NETWORK_MENUS = [

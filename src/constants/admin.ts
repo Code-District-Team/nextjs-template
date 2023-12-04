@@ -1,4 +1,4 @@
-import { SubscriptionPlans } from "./SubscriptionPlans";
+import { SubscriptionPlans } from "./subscriptionPlans";
 
 export const ACCOUNT_TYPES: string[] = SubscriptionPlans.map(
   (plan) => plan.type,

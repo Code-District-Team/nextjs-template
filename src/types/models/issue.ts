@@ -1,10 +1,12 @@
-import { User } from "./User";
+import { User } from "./user";
 
-export type Document = {
+export type Issue = {
   _id: string;
   user: User;
   flagged: boolean;
-  type: string;
+  reported_by: User;
+  memo: string;
   created_at: string;
+  status: string;
   [key: string | number]: unknown;
 };

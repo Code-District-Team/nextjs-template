@@ -1,12 +1,10 @@
-import { User } from "./User";
+import { User } from "./user";
 
-export type Issue = {
+export type AdminActivity = {
   _id: string;
   user: User;
   flagged: boolean;
-  reported_by: User;
-  memo: string;
+  action: string;
   created_at: string;
-  status: string;
   [key: string | number]: unknown;
 };

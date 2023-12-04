@@ -1,6 +1,6 @@
 import { User } from "@/types/models";
 
-export * from "./my-account.type";
+export * from "./myAccount.type";
 
 // @TODO this will be removed
 

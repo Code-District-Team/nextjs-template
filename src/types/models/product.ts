@@ -1,4 +1,4 @@
-import { Business } from "@/types/models/Business";
+import { Business } from "@/types/models/business";
 
 export type Product = {
   _id: string;
