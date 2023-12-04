@@ -4,8 +4,8 @@ import React from "react";
 import RecipeReviewCard from "../card";
 
 test("expands and collapses card content on button click", async () => {
-  render(<RecipeReviewCard />);
-
+  let target = render(<RecipeReviewCard />);
+  expect(target).toMatchSnapshot();
   // Card should start in a collapsed state
   expect(screen.queryByText(/Method:/i)).not.toBeInTheDocument();
 
