@@ -131,7 +131,8 @@ const common = {
     field_invalid_characters: "This field contains invalid characters.",
     field_invalid_email: "Invalid email address",
     field_invalid_phone: "Invalid phone number",
-    field_invalid_url: "Invalid URL, please provide valid url (example: https://<hostname>.com)",
+    field_invalid_url:
+      "Invalid URL, please provide valid url (example: https://<hostname>.com)",
     field_max: "This field must not exceed {{max}} characters",
     field_max_value: "This field must not be greater than {{max}}",
     field_min: "This field should be minimum {{min}} characters",
@@ -181,7 +182,8 @@ const common = {
   notifications: {
     accepted_bcard_subtitle: "{{name}} accepted your business card request",
     accepted_bcard_title: "Business card accepted",
-    business_info_subtitle: "There is required data related to your business pending to be added",
+    business_info_subtitle:
+      "There is required data related to your business pending to be added",
     business_info_title: "Business setup",
     business_request_subtitle: "{{name}} sent you a business card request",
     business_request_title: "Business card request",
