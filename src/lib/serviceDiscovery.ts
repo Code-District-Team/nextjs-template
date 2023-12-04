@@ -1,7 +1,7 @@
-import { SERVICES_FALLBACK } from "@/constants/Services";
+import { SERVICES_FALLBACK } from "@/constants/services";
 import { fetcher } from "@/lib/https";
 import Storage from "@/lib/storage";
-import { MethodTypes } from "@/types/Http/MethodTypes";
+import { MethodTypes } from "@/types/http/methodTypes";
 
 class ServiceDiscovery {
   private readonly storage: Storage;

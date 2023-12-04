@@ -34,10 +34,10 @@ const SEARCH_BUSINESS_URI = "api/v1/business";
 export function useSearchForAccounts({
   searchTerms = "",
   filters = {},
-}: searchParamsType): APIResponseInfinite<ContactResponse<User[]>> {
+}: searchParamsType): APIResponseInfinite<ContactResponse> {
   const body = { lastName: searchTerms || " ", ...filters };
 
-  return useInfiniteFetch<ContactResponse<User[]>>(
+  return useInfiniteFetch<ContactResponse>(
     SERVICES.ACCOUNT,
     SEARCH_ACCOUNT_URI,
     { body },

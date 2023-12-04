@@ -1,7 +1,7 @@
-import { SERVICES } from "@/constants/Services";
+import { SERVICES } from "@/constants/services";
 import { fetcher, FileAPIResponse, fileS3Uploader } from "@/lib/https";
-import { FileSignedUpResponse } from "@/types/Http";
-import { MethodTypes } from "@/types/Http/MethodTypes";
+import { FileSignedUpResponse } from "@/types/http";
+import { MethodTypes } from "@/types/http/methodTypes";
 const SIGN_FILES_URI = "api/v1/files/signed-url";
 const DELETE_FILES_URI = "api/v1/files/";
 

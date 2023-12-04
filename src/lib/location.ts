@@ -1,6 +1,6 @@
-import { SERVICES } from "@/constants/Services";
+import { SERVICES } from "@/constants/services";
 import { useFetch } from "@/hooks/useFetch";
-import { APIResponse } from "@/types/Http";
+import { APIResponse } from "@/types/http";
 
 export type Province = {
   code: string;

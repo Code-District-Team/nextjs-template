@@ -3,8 +3,8 @@ import useSWRInfinite, { SWRInfiniteConfiguration } from "swr/infinite";
 
 import { PER_PAGE } from "@/constants";
 import { fetcher } from "@/lib/https";
-import { APIResponse, APIResponseInfinite, QueryBody } from "@/types/Http";
-import { MethodTypes } from "@/types/Http/MethodTypes";
+import { APIResponse, APIResponseInfinite, QueryBody } from "@/types/http";
+import { MethodTypes } from "@/types/http/methodTypes";
 
 export const useFetch = <T>(
   service: string,

@@ -1,8 +1,8 @@
-import { SERVICES } from "@/constants/Services";
+import { SERVICES } from "@/constants/services";
 import { useFetch } from "@/hooks/useFetch";
 import { fetcher } from "@/lib/https";
-import { APIResponse } from "@/types/Http";
-import { MethodTypes } from "@/types/Http/MethodTypes";
+import { APIResponse } from "@/types/http";
+import { MethodTypes } from "@/types/http/methodTypes";
 
 import {
   ConversationResponse,
