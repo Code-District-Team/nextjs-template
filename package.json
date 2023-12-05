@@ -27,6 +27,8 @@
     "@types/react-date-range": "^1.4.8",
     "ag-grid-community": "^30.2.1",
     "ag-grid-react": "^30.2.1",
+    "braintree": "^3.19.0",
+    "braintree-web-drop-in-react": "^1.2.1",
     "eslint-plugin-filenames-simple": "^0.9.0",
     "eslint-plugin-jest": "^27.6.0",
     "jest": "^29.7.0",
@@ -46,6 +48,8 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
+    "@types/braintree": "^3.3.11",
+    "@types/braintree-web-drop-in": "^1.39.3",
     "@types/jest": "^29.5.10",
     "@types/node": "^20",
     "@types/react": "^18",

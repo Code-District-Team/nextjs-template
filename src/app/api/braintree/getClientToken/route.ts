@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import gateway from "../../../../lib/braintreeClient";
 
 // Assuming you want to use a GET request to fetch the client token
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+async function GET(req: NextApiRequest, res: NextApiResponse) {
   console.log("Request for Braintree client token received");
   try {
     const response = await gateway.clientToken.generate({});
