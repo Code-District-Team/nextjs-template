@@ -19,6 +19,7 @@ const NetworkConstants = {
       BasePort: process.env.NEXT_PUBLIC_CLIENT_BASE_PORT,
     },
     posts: `${SERVICES.POSTS}/posts`,
+    login: "https://dummyjson.com/auth/login",
   },
   Method: {
     GET: "GET",
@@ -50,9 +51,13 @@ const NetworkConstants = {
     Error: "Opps, an error occurred!",
   },
   StatusCode: {
+    Successful: 200,
+    Created: 201,
+    BadRequest: 400,
     Unauthorized: 401,
-    Invalid: 401,
+    Forbidden: 403,
     NotFound: 404,
+    ServerError: 500,
   },
 };
 export default NetworkConstants;

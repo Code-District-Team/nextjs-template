@@ -1,33 +1,65 @@
+import K from "@/constants";
+
 export default class NetworkCall {
-  static async makeApiCall<T>(request: any): Promise<T> {
+  static async makeApiCall<T>(request: any) {
     const options: RequestInit = {
       method: request.method,
       headers: {
         "Content-Type": "application/json",
-        // Add any other headers if needed
+        ...request.headers,
       },
       // Include credentials if your API requires it
       // credentials: 'include',
     };
 
-    if (request.data) {
-      options.body = JSON.stringify(request.data);
+    if (request.body) {
+      options.body = JSON.stringify(request.body);
     }
 
     try {
       const response = await fetch(request.url, options);
+      await this.handleResponseStatus(response);
 
-      if (!response.ok) {
-        // Handle non-successful responses
-        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+      const contentType = response.headers.get("content-type");
+      if (contentType?.includes("application/json")) {
+        return await response.json();
+      } else {
+        // Handle other content types (e.g., text/plain) here
       }
-      // Parse and return the response data
-      return await response.json();
-      // return response;
     } catch (error: any) {
       // Handle network errors or other exceptions
       console.error("Error:", error.message);
       throw error;
+    }
+  }
+
+  /**
+   * Handles different HTTP response statuses.
+   * @param {Response} response - The fetch response object.
+   */
+
+  private static async handleResponseStatus(response: Response): Promise<void> {
+    const statusCode = K.Network.StatusCode;
+    const responseStatus = response.status;
+
+    switch (responseStatus) {
+      case statusCode.Successful:
+        return; // Successful response, no action needed
+      case statusCode.BadRequest:
+        // Handle bad request
+        break;
+      case statusCode.Unauthorized:
+        // Logout or redirect
+        throw new Error("Unauthorized");
+      case statusCode.Forbidden:
+        // Redirect to Forbidden Fallback UI
+        break;
+      case statusCode.ServerError:
+        console.error("Server error");
+        // Redirect to Server Error Fallback UI
+        break;
+      default:
+        throw new Error(`Error: ${responseStatus} - ${response.statusText}`);
     }
   }
 }
