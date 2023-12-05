@@ -12,17 +12,20 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+import authReducer from "./slices/auth";
 import counterReducer from "./slices/counterSlice";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
+  auth: authReducer,
+
   //add all your reducers here
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["counter"],
+  whitelist: ["auth"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
