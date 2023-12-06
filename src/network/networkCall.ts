@@ -1,3 +1,5 @@
+import { permanentRedirect } from "next/navigation";
+
 import K from "@/constants";
 
 export default class NetworkCall {
@@ -59,9 +61,11 @@ export default class NetworkCall {
         break;
       case statusCode.Unauthorized:
         // Logout or redirect
+        // permanentRedirect("/unauthorized");
         throw new Error("Unauthorized");
       case statusCode.Forbidden:
         // Redirect to Forbidden Fallback UI
+        permanentRedirect("/unauthorized");
         break;
       case statusCode.ServerError:
         console.error("Server error");
