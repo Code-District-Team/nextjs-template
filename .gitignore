@@ -44,6 +44,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# NEW_RELIC
+newrelic_agent.log
 
 # lock files
 yarn.lock
