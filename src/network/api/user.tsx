@@ -1,3 +1,4 @@
+import { setCookies } from "@/lib/cookies";
 import { store } from "@/store";
 import { setAuth } from "@/store/slices/auth";
 
@@ -9,6 +10,7 @@ export const userLoginApi = async (req: any) => {
   try {
     const user = await NetworkCall.makeApiCall(UserRequest.userLogin(req));
     store.dispatch(setAuth(user || []));
+    setCookies("auth", user);
     return user;
   } catch (error) {
     return error;

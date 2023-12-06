@@ -3,7 +3,7 @@ import { Area } from "react-easy-crop";
 import { Province, Provinces } from "@/lib/location";
 
 export function Capitalize(value: string): string {
-  var newValue = value
+  let newValue = value
     .split(" ")
     .map((d: string) => d.charAt(0).toUpperCase() + d.slice(1))
     .join(" ");

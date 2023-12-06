@@ -1,6 +1,6 @@
-// import { isServer } from "src/utils/generalUtility";
+import { getSingleCookie } from "@/lib/cookies";
+
 import K from "../../constants";
-import { store } from "../../store";
 
 export default class Request {
   url: string = "";
@@ -16,18 +16,8 @@ export default class Request {
     headers = {},
     token = null,
   ) {
-    const state = store.getState();
-    // const { auth } = state;
-
-    let bearerToken = "";
-    // if (isServer && token) {
-    //   bearerToken = token;
-    // } else if (auth?.loggedInUser) {
-    //   token ? (bearerToken = token) : (bearerToken = auth?.loggedInUser?.token);
-    // } else {
-    //   bearerToken = auth?.authToken;
-    // }
-
+    const user: any = getSingleCookie("auth");
+    let bearerToken = JSON.parse(user)?.token;
     headers = {
       ...(defaultHeaderType === K.Network.Header.Type.Json ||
       defaultHeaderType === K.Network.Header.Type.formData

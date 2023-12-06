@@ -1,7 +1,11 @@
 import K from "@/constants";
 
 export default class NetworkCall {
-  static async makeApiCall<T>(request: any) {
+  static async makeApiCall<T>(
+    request: any,
+    cacheOptions: any = { cache: "no-store" },
+  ) {
+    debugger;
     const options: RequestInit = {
       method: request.method,
       headers: {
@@ -17,7 +21,12 @@ export default class NetworkCall {
     }
 
     try {
-      const response = await fetch(request.url, options);
+      let response;
+      if (request.method == "get") {
+        response = await fetch(request.url, cacheOptions);
+      } else {
+        response = await fetch(request.url, options);
+      }
       await this.handleResponseStatus(response);
 
       const contentType = response.headers.get("content-type");
