@@ -1,3 +1,4 @@
+import { cookieKeys } from "@/constants/cookiePreferences";
 import { getSingleCookie } from "@/lib/cookies";
 
 import K from "../../constants";
@@ -16,8 +17,8 @@ export default class Request {
     headers = {},
     token = null,
   ) {
-    const user: any = getSingleCookie("auth");
-    let bearerToken = JSON.parse(user)?.token;
+    const user: any = getSingleCookie(cookieKeys.auth);
+    let bearerToken = user ? JSON.parse(user)?.token : "";
     headers = {
       ...(defaultHeaderType === K.Network.Header.Type.Json ||
       defaultHeaderType === K.Network.Header.Type.formData

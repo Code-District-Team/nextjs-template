@@ -75,7 +75,7 @@ The library used is [next-translate](https://github.com/vinissimus/next-translat
 
 The libraries used are [Jest](https://github.com/facebook/jest) and [React testing library](https://github.com/testing-library/react-testing-library)
 
-### <ins>Testing a function: </ins>
+### <h1>Testing a function: </ins>
 
 ```js
 import { distance } from "utils";
@@ -90,7 +90,7 @@ describe("Distance Function", () => {
 });
 ```
 
-### <ins>Testing a component: </ins>
+### <h1>Testing a component: </ins>
 
 ```js
 import "@testing-library/jest-dom";
@@ -110,7 +110,7 @@ describe("Login", () => {
 });
 ```
 
-### <ins>Snapshot test: </ins>
+### <h1>Snapshot test: </ins>
 
 ```js
   let target = /* Component or Object */;
@@ -123,11 +123,11 @@ Snapshots should be kept in git history, and should be updated when the target c
 
 To update all snapshots run `npm run snapshot`
 
-### <ins>Coverage test: </ins>
+### <h1>Coverage test: </ins>
 
 To do coverage test run `npm run coverage`
 
-### <ins>Mock functions: </ins>
+### <h1>Mock functions: </ins>
 
 To avoid running the actual function, mock the result as follow:
 

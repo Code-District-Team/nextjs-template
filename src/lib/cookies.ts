@@ -11,12 +11,11 @@ export const setCookies = (name: string, data: any) => {
 };
 
 export const getSingleCookie = (name: string) => {
-  const user = getCookie(name);
-  return user;
+  return getCookie(name);
 };
 
 export const getAllCookies = () => {
-  getCookies();
+  return getCookies();
 };
 
 export const hasCookies = (name: string) => {

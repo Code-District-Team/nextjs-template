@@ -3,6 +3,10 @@ export const COOKIE_ESSENTIAL_KEY = "cookie_essential";
 export const COOKIE_PERFORMANCE_KEY = "cookie_performance";
 export const COOKIE_FUNCTIONAL_KEY = "cookie_functional";
 
+export const cookieKeys = {
+  auth: "auth",
+};
+
 export const Preferences = [
   {
     active: true,
