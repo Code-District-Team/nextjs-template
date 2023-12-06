@@ -7,7 +7,6 @@ export default class NetworkCall {
     request: any,
     cacheOptions: any = { cache: "no-store" },
   ) {
-    debugger;
     const options: RequestInit = {
       method: request.method,
       headers: {

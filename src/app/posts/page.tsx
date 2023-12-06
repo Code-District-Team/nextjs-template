@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { getPostsApi } from "@/network/api/posts";
+import { getPostsApi } from "@/network/apis/posts";
 
 const FakePosts = () => {
   const [posts, setPosts] = useState([]);
@@ -12,9 +12,7 @@ const FakePosts = () => {
       setPosts(res);
     };
     fetchData();
-    console.log("12");
   }, []);
-  console.log("1");
   return (
     <>
       <h1>Posts</h1>

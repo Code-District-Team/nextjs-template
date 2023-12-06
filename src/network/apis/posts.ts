@@ -1,5 +1,5 @@
 import NetworkCall from "../networkCall";
-import PostRequest from "../request/posts";
+import PostRequest from "../requests/posts";
 
 export const getPostsApi = async () => {
   // reqBody: Record<string, any> | null

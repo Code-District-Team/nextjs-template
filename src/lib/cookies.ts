@@ -6,12 +6,29 @@ import {
   setCookie,
 } from "cookies-next";
 
+let cookies: () => ReadonlyRequestCookies;
+
+import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+
+import { isServer } from "./utils";
+
+if (isServer()) {
+  // This code runs on the server
+  import("next/headers").then((headersModule) => {
+    cookies = headersModule.cookies;
+  });
+}
+
 export const setCookies = (name: string, data: any) => {
   setCookie(name, data);
 };
 
-export const getSingleCookie = (name: string) => {
-  return getCookie(name);
+export const getaCookie = (name: string) => {
+  if (isServer()) {
+    return getCookie(name, { cookies });
+  } else {
+    return getCookie(name);
+  }
 };
 
 export const getAllCookies = () => {
