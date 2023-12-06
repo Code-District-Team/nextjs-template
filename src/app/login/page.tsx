@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 import { deleteCookies, getaCookie } from "@/lib/cookies";
-import { userLoginApi } from "@/network/api/user";
+import { userLoginApi } from "@/network/apis/user";
 
 const Login = () => {
   const [isClient, setIsClient] = useState(false);
@@ -15,7 +15,6 @@ const Login = () => {
       password: "0lelplR",
     };
     await userLoginApi(userCreds);
-    console.log("first");
   };
   const user: any = getaCookie("auth");
   return (
