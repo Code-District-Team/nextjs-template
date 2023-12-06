@@ -184,12 +184,12 @@ Payment integration is carried out by using the custom component BraintreePaymen
 
 In addition to enviornment variables mentioned in **Braintree Configuration** section there are more variable mentioned in .env.example which needs to be set to make the app work
 
+
 ```
 SD_URL
 CLASSIFICATION_URL
 
 ```
-
 ### Testing
 
 In order to test the payment gateway page, here is [a page](https://developer.paypal.com/braintree/docs/reference/general/testing#test-value-4000111111111115) that gives you many cards to test.
