@@ -1,7 +1,7 @@
 'use client';
 
 // app/components/BraintreeDropin.tsx
-import dropin, { Dropin } from 'braintree-web-drop-in';
+import dropin from 'braintree-web-drop-in';
 import React, { useEffect, useState } from 'react';
 
 const BraintreeDropin: React.FC = () => {
