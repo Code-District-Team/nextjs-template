@@ -31,14 +31,7 @@ export const SubscriptionPlans = [
     type: 'individual',
   },
   {
-    icon: (
-      <Image
-        alt="Executive"
-        src="/images/icon-executive.svg"
-        width={23}
-        height={32}
-      ></Image>
-    ),
+    icon: <Image alt="Executive" src="/images/icon-executive.svg" width={23} height={32}></Image>,
     planName: <span className="font-bold">Executive</span>,
     price: 5.99,
     type: 'executive',

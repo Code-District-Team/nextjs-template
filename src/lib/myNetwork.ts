@@ -1,29 +1,15 @@
 // import { BusinessItem } from "@/components/MyNetwork/types";
-import {
-  DEFAULT_PRIVACY_SETTING,
-  MY_NETWORK_MENUS,
-  PER_PAGE,
-} from '@/constants';
-import {
-  BUSINESS_CARD_REQUEST_URI,
-  CONTACTS_REQUEST_URI,
-  SERVICES,
-} from '@/constants/services';
+import { DEFAULT_PRIVACY_SETTING, MY_NETWORK_MENUS, PER_PAGE } from '@/constants';
+import { BUSINESS_CARD_REQUEST_URI, CONTACTS_REQUEST_URI, SERVICES } from '@/constants/services';
 import { useFetch } from '@/hooks/useFetch';
 import { fetcher, query } from '@/lib/https';
 import { APIResponse, RequestsResponse } from '@/types/http';
 import { MethodTypes } from '@/types/http/methodTypes';
 import { PrivacySetting, User } from '@/types/models';
 
-export const setMenusWithBadges = (
-  setMenus: Function,
-  badge: string,
-  selectedMenu: number
-) => {
+export const setMenusWithBadges = (setMenus: Function, badge: string, selectedMenu: number) => {
   // Set the menus without waiting for the badge value
-  MY_NETWORK_MENUS.map(
-    (menu, index) => (menu.selected = index == selectedMenu)
-  );
+  MY_NETWORK_MENUS.map((menu, index) => (menu.selected = index == selectedMenu));
   setMenus(MY_NETWORK_MENUS);
 
   // Set the badge value
@@ -34,13 +20,9 @@ export const setMenusWithBadges = (
 };
 
 export const useBCardRequestCount = (): string => {
-  const { data } = useFetch<RequestsResponse>(
-    SERVICES.ACCOUNT,
-    'api/v1/contact/request',
-    {
-      body: { direction: 'in' },
-    }
-  );
+  const { data } = useFetch<RequestsResponse>(SERVICES.ACCOUNT, 'api/v1/contact/request', {
+    body: { direction: 'in' },
+  });
   return data?.count?.toString() ?? '';
 };
 
@@ -48,8 +30,7 @@ type Item = User; //| BusinessItem;
 
 export const handleItemSelection = (item: Item, setSelected: Function) => {
   setSelected((selectedItems: Item[]) => {
-    if (selectedItems.findByID(item.id))
-      return selectedItems.filter((e: Item) => e.id !== item.id);
+    if (selectedItems.findByID(item.id)) return selectedItems.filter((e: Item) => e.id !== item.id);
     else return [...selectedItems, item];
   });
 };
@@ -62,10 +43,7 @@ export const removeItem = (index: number, setItems: Function) => {
   });
 };
 
-export const requestBCard = async (
-  userId: string,
-  data: object
-): Promise<object> => {
+export const requestBCard = async (userId: string, data: object): Promise<object> => {
   const params = {
     receiver: userId,
   };
@@ -131,12 +109,7 @@ export const sendBCardRequests = (
     requestMessage: message,
   };
 
-  return fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.POST,
-    CONTACTS_REQUEST_URI + query(params),
-    payload
-  );
+  return fetcher(SERVICES.ACCOUNT, MethodTypes.POST, CONTACTS_REQUEST_URI + query(params), payload);
 };
 
 /**
@@ -158,12 +131,7 @@ export const acceptBCardRequests = (
     senders: userIds,
   };
 
-  return fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.POST,
-    CONTACTS_REQUEST_URI + query(params),
-    payload
-  );
+  return fetcher(SERVICES.ACCOUNT, MethodTypes.POST, CONTACTS_REQUEST_URI + query(params), payload);
 };
 
 /**
@@ -171,10 +139,7 @@ export const acceptBCardRequests = (
  * @param userIds Array of user ids of the senders
  * @param message Message for the senders
  */
-export const refuseBCardRequests = (
-  userIds: string[] = [],
-  message: string = ''
-) => {
+export const refuseBCardRequests = (userIds: string[] = [], message: string = '') => {
   const params = { direction: 'in' };
 
   const payload = {
@@ -182,12 +147,7 @@ export const refuseBCardRequests = (
     senders: userIds,
   };
 
-  return fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.POST,
-    CONTACTS_REQUEST_URI + query(params),
-    payload
-  );
+  return fetcher(SERVICES.ACCOUNT, MethodTypes.POST, CONTACTS_REQUEST_URI + query(params), payload);
 };
 
 /**
@@ -195,10 +155,7 @@ export const refuseBCardRequests = (
  * @param userIds Array of user ids of the senders
  * @param message Message for the senders
  */
-export const revokeBCardRequests = (
-  userIds: string[] = [],
-  message: string = ''
-) => {
+export const revokeBCardRequests = (userIds: string[] = [], message: string = '') => {
   const params = { direction: 'out' };
 
   const payload = {
@@ -206,12 +163,7 @@ export const revokeBCardRequests = (
     requestMessage: message,
   };
 
-  return fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.PUT,
-    CONTACTS_REQUEST_URI + query(params),
-    payload
-  );
+  return fetcher(SERVICES.ACCOUNT, MethodTypes.PUT, CONTACTS_REQUEST_URI + query(params), payload);
 };
 
 /**

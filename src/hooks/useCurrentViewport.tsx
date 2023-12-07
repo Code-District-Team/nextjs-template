@@ -27,8 +27,7 @@ export function useCurrentViewport(viewports: sizeByMedia = {}): breakpoint {
         .filter(media => media.value >= 0)
         .sort((media1, media2) => media1.value - media2.value);
 
-      const selectedBreakpoint =
-        validBreaks.length > 0 ? validBreaks[0].key : 'none';
+      const selectedBreakpoint = validBreaks.length > 0 ? validBreaks[0].key : 'none';
 
       setBreakpoint(selectedBreakpoint);
     };

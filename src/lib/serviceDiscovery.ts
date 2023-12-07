@@ -25,10 +25,7 @@ class ServiceDiscovery {
       }
       if (!services) return null;
 
-      if (
-        services &&
-        (services[service] === undefined || services[service] === '')
-      ) {
+      if (services && (services[service] === undefined || services[service] === '')) {
         return SERVICES_FALLBACK[service];
       } else {
         return services[service];

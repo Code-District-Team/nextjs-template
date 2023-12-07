@@ -21,9 +21,7 @@ type BusinessResponse<T = Business> = {
  * @param email. Email of user
  */
 
-export function useBusinessByUser<T>(
-  userId: string
-): APIResponse<BusinessResponse<T>> {
+export function useBusinessByUser<T>(userId: string): APIResponse<BusinessResponse<T>> {
   let uri = '';
   if (userId) {
     uri = `${BUSINESS_URI}?userId=${userId}`;
@@ -37,9 +35,7 @@ export function useBusinessByUser<T>(
  * @param email. Email of user
  */
 
-export function useBusinessById<T = Business>(
-  businessId: string | undefined
-): APIResponse<T> {
+export function useBusinessById<T = Business>(businessId: string | undefined): APIResponse<T> {
   let uri = '';
   if (businessId) {
     uri = `${BUSINESS_URI}?businessId=${businessId}`;
@@ -62,10 +58,7 @@ export async function updateBusinessData(
  * @param businessId
  * @param industryId
  */
-export async function deleteBusinessIndustry(
-  businessId: string,
-  industryId: string
-) {
+export async function deleteBusinessIndustry(businessId: string, industryId: string) {
   const uri = `${BUSINESS_URI}?businessId=${businessId}&industryId=${industryId}`;
 
   return fetcher(SERVICES.BUSINESS, MethodTypes.DELETE, uri);
@@ -79,9 +72,7 @@ export const getBusinessByIdCacheKey = (businessId: string) => {
   return `${BUSINESS_URI}?businessId=${businessId}`;
 };
 
-export async function createBusiness(
-  payload: Partial<Business | BusinessAddress>
-) {
+export async function createBusiness(payload: Partial<Business | BusinessAddress>) {
   return fetcher(SERVICES.BUSINESS, MethodTypes.POST, BUSINESS_URI, payload);
 }
 
@@ -93,20 +84,14 @@ export async function searchBusiness(name: string, region: string) {
   return fetcher(SERVICES.BUSINESS, MethodTypes.GET, uri);
 }
 
-export async function createBusinessContact(
-  businessId: string,
-  payload: BusinessAdmin[]
-) {
+export async function createBusinessContact(businessId: string, payload: BusinessAdmin[]) {
   return fetcher(SERVICES.BUSINESS, MethodTypes.PUT, BUSINESS_URI, {
     businessId,
     contacts: payload,
   });
 }
 
-export async function deleteBusinessContact(
-  businessId: string,
-  businessContact: string
-) {
+export async function deleteBusinessContact(businessId: string, businessContact: string) {
   const uri = `${BUSINESS_URI}?businessId=${businessId}&contactName=${businessContact}`;
 
   return fetcher(SERVICES.BUSINESS, MethodTypes.DELETE, uri);

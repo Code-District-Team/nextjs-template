@@ -1,10 +1,4 @@
-import {
-  deleteCookie,
-  getCookie,
-  getCookies,
-  hasCookie,
-  setCookie,
-} from 'cookies-next';
+import { deleteCookie, getCookie, getCookies, hasCookie, setCookie } from 'cookies-next';
 
 let cookies: () => ReadonlyRequestCookies;
 import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';

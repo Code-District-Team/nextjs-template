@@ -21,9 +21,7 @@ export type signedUpBodyType = {
  *             Videos: .mp4, .m4v, .mov, .webm, .mkv, .avi, .wmv
  * @return parameters to upload File to S3
  */
-export async function getFileSignedUrl(
-  payload: signedUpBodyType
-): Promise<FileSignedUpResponse> {
+export async function getFileSignedUrl(payload: signedUpBodyType): Promise<FileSignedUpResponse> {
   return fetcher(SERVICES.FILES, MethodTypes.POST, SIGN_FILES_URI, payload);
 }
 
@@ -32,9 +30,7 @@ export async function getFileSignedUrl(
  * @param payload. Object with the file name and fileSize
  * @return fileDownloadUrl
  */
-export async function uploadFileToS3(
-  fileToUpload: File
-): Promise<FileAPIResponse> {
+export async function uploadFileToS3(fileToUpload: File): Promise<FileAPIResponse> {
   const { name, size } = fileToUpload;
 
   const signData = {

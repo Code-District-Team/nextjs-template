@@ -26,17 +26,12 @@ export function getStateName(stateId: string, t: Function): string {
   });
 }
 
-export function getStatesFromCountryId(
-  countryId: string,
-  statesMap?: Provinces
-): Province[] {
+export function getStatesFromCountryId(countryId: string, statesMap?: Provinces): Province[] {
   if (!countryId || !statesMap) return [];
 
   const countryStates =
     statesMap && statesMap[countryId]?.length > 0
-      ? statesMap[countryId].sort((state1, state2) =>
-          state1.name.localeCompare(state2.name)
-        )
+      ? statesMap[countryId].sort((state1, state2) => state1.name.localeCompare(state2.name))
       : [];
 
   return countryStates;
@@ -57,10 +52,7 @@ export const getImageFromUrl = (url: string): Promise<HTMLImageElement> => {
   });
 };
 
-export const getBlobFromCanvas = (
-  canvas: HTMLCanvasElement,
-  file: File
-): Promise<void> => {
+export const getBlobFromCanvas = (canvas: HTMLCanvasElement, file: File): Promise<void> => {
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob: any) => {
       if (blob) {
@@ -109,10 +101,7 @@ export const extractFileIdFromUrl = (fileUrl: string = '') => {
 export const uuid = () => {
   // @ts-ignore
   return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
-    (
-      c ^
-      (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
-    ).toString(16)
+    (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
   );
 };
 

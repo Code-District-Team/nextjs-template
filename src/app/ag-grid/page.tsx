@@ -60,9 +60,7 @@ const AgGrid: React.FC = () => {
       salary: Math.floor(Math.random() * 100000) + 50000,
       department: ['IT', 'HR', 'Finance'][Math.floor(Math.random() * 3)],
       experience: `${Math.floor(Math.random() * 20)} years`,
-      position: ['Developer', 'Manager', 'Analyst'][
-        Math.floor(Math.random() * 3)
-      ],
+      position: ['Developer', 'Manager', 'Analyst'][Math.floor(Math.random() * 3)],
       education: ['Bachelor', 'Master', 'Ph.D.'][Math.floor(Math.random() * 3)],
       skills: ['JavaScript', 'Python', 'Java'][Math.floor(Math.random() * 3)],
       startDate: getRandomDate(new Date(2010, 0, 1), new Date(2023, 0, 1)),
@@ -76,8 +74,7 @@ const AgGrid: React.FC = () => {
   function getRandomDate(startDate: Date, endDate: Date) {
     const startMillis = startDate.getTime();
     const endMillis = endDate.getTime();
-    const randomMillis =
-      startMillis + Math.random() * (endMillis - startMillis);
+    const randomMillis = startMillis + Math.random() * (endMillis - startMillis);
     return new Date(randomMillis);
   }
 

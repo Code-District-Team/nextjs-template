@@ -11,12 +11,7 @@ import {
 import { useFetch } from '@/hooks/useFetch';
 import { fetcher, query } from '@/lib/https';
 // import { t } from "@/pages/_app"; // TODO: Need to integrate next-translation
-import {
-  APIBulkResponse,
-  APIResponse,
-  ContactResponse,
-  GroupResponse,
-} from '@/types/http';
+import { APIBulkResponse, APIResponse, ContactResponse, GroupResponse } from '@/types/http';
 import { MethodTypes } from '@/types/http/methodTypes';
 import { User } from '@/types/models';
 
@@ -57,10 +52,14 @@ export type moveGroupParamsType = {
 // ------- GROUPS -------
 
 const getGroups = (uri: string): APIResponse<[]> => {
-  const { data, error, isLoading, isValidating, mutate } =
-    useFetch<GroupResponse>(SERVICES.ACCOUNT, uri, undefined, {
+  const { data, error, isLoading, isValidating, mutate } = useFetch<GroupResponse>(
+    SERVICES.ACCOUNT,
+    uri,
+    undefined,
+    {
       revalidateOnFocus: false,
-    });
+    }
+  );
   // TODO: Needs to define `Folder` interface and translation to run below code
   /* let folders: Folder[] = [
     { description: "", groupId: "", groupName: t ? t("loading") : "loading" },
@@ -85,44 +84,29 @@ export const createGroup = async (
   groupName: string,
   groupDescription: string = ''
 ): Promise<object> => {
-  return await fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.POST,
-    uri + query({ groupName }),
-    {
-      description: groupDescription,
-    }
-  );
+  return await fetcher(SERVICES.ACCOUNT, MethodTypes.POST, uri + query({ groupName }), {
+    description: groupDescription,
+  });
 };
 
-export const createAccountGroup = (
-  groupName: string,
-  groupDescription: string
-) => createGroup(ACCOUNTS_URI, groupName, groupDescription);
+export const createAccountGroup = (groupName: string, groupDescription: string) =>
+  createGroup(ACCOUNTS_URI, groupName, groupDescription);
 
-export const createBusinessGroup = (
-  groupName: string,
-  groupDescription: string
-) => createGroup(BUSINESSES_URI, groupName, groupDescription);
+export const createBusinessGroup = (groupName: string, groupDescription: string) =>
+  createGroup(BUSINESSES_URI, groupName, groupDescription);
 
 export const createLeadGroup = (groupName: string, groupDescription: string) =>
   createGroup(BUSINESS_LEADS_URI, groupName, groupDescription);
 
-export const createContactGroup = (
-  groupName: string,
-  groupDescription: string
-) => createGroup(CONTACTS_URI, groupName, groupDescription);
+export const createContactGroup = (groupName: string, groupDescription: string) =>
+  createGroup(CONTACTS_URI, groupName, groupDescription);
 
 export const renameGroup = async (
   uri: string,
   groupId: string,
   groupName: string
 ): Promise<object> => {
-  return await fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.PUT,
-    uri + query({ groupId, groupName })
-  );
+  return await fetcher(SERVICES.ACCOUNT, MethodTypes.PUT, uri + query({ groupId, groupName }));
 };
 
 export const updateGroup = async (
@@ -137,23 +121,11 @@ export const updateGroup = async (
     queryData.groupName = groupName;
   }
 
-  return await fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.PUT,
-    uri + query(queryData),
-    groupDescription
-  );
+  return await fetcher(SERVICES.ACCOUNT, MethodTypes.PUT, uri + query(queryData), groupDescription);
 };
 
-export const deleteGroup = async (
-  uri: string,
-  groupId: string
-): Promise<object> => {
-  return await fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.DELETE,
-    uri + query({ groupId })
-  );
+export const deleteGroup = async (uri: string, groupId: string): Promise<object> => {
+  return await fetcher(SERVICES.ACCOUNT, MethodTypes.DELETE, uri + query({ groupId }));
 };
 
 export const deleteAccountGroup = (groupId: string): Promise<object> =>
@@ -164,12 +136,7 @@ export const deleteBusinessGroup = (groupId: string): Promise<object> =>
 
 // ------- GROUP CONTENT -------
 
-const getGroupContent = (
-  uri: string,
-  groupId: string,
-  page: number,
-  limit = PER_PAGE
-) => {
+const getGroupContent = (uri: string, groupId: string, page: number, limit = PER_PAGE) => {
   const url = `${uri}/entry`;
 
   return useFetch<ContactResponse>(
@@ -182,11 +149,7 @@ const getGroupContent = (
   );
 };
 
-export const getAccounts = (
-  groupId: string,
-  page: number,
-  limit = PER_PAGE
-) => {
+export const getAccounts = (groupId: string, page: number, limit = PER_PAGE) => {
   return getGroupContent(ACCOUNTS_URI, groupId, page, limit);
 };
 
@@ -287,8 +250,7 @@ export const addItemToGroups = async (uri: string, itemId: string) => {
 };
 
 export const addBusinessLead = async (businessId: string, status: string) => {
-  const route =
-    BUSINESS_LEADS_URI + '/entry' + query({ ref: businessId, status });
+  const route = BUSINESS_LEADS_URI + '/entry' + query({ ref: businessId, status });
 
   return await fetcher(SERVICES.ACCOUNT, MethodTypes.POST, route);
 };
@@ -303,12 +265,7 @@ export const moveBetweenGroups = async (
 
   if (targetGroupId) params.targetGroupId = targetGroupId;
 
-  return await fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.PUT,
-    uri + '/entry' + query(params),
-    refs
-  );
+  return await fetcher(SERVICES.ACCOUNT, MethodTypes.PUT, uri + '/entry' + query(params), refs);
 };
 
 export const removeFromGroup = async (

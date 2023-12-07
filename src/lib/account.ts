@@ -40,9 +40,7 @@ export function useUserAccount(): APIResponse<User> {
  * @param userId. GUID
  */
 
-export function usePrivacySettings(
-  userId: string
-): APIResponse<PrivacySettings> {
+export function usePrivacySettings(userId: string): APIResponse<PrivacySettings> {
   let uri = '';
   if (userId) {
     uri = `${ACCOUNT_URI}/privacy?userId=${userId}`;
@@ -56,18 +54,12 @@ export function usePrivacySettings(
  * Update user account
  * @param email. Email of user */
 
-export async function updateAccountData(
-  email: string | undefined,
-  payload: Partial<User>
-) {
+export async function updateAccountData(email: string | undefined, payload: Partial<User>) {
   const data = { ...payload, username: email };
   return fetcher(SERVICES.ACCOUNT, MethodTypes.PUT, ACCOUNT_URI, data);
 }
 
-export async function updatePrivacyData(
-  userId: string,
-  payload: Partial<User>
-) {
+export async function updatePrivacyData(userId: string, payload: Partial<User>) {
   let uri = '';
   if (userId) {
     uri = `${ACCOUNT_URI}/privacy`;
@@ -138,11 +130,7 @@ export async function createAccount(payload: Partial<User>) {
  * Delete user account
  * @param username. Username of user */
 export async function closeUserAccount(username: string) {
-  return fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.DELETE,
-    `${ACCOUNT_URI}?username=${username}`
-  );
+  return fetcher(SERVICES.ACCOUNT, MethodTypes.DELETE, `${ACCOUNT_URI}?username=${username}`);
 }
 
 /**
@@ -150,17 +138,9 @@ export async function closeUserAccount(username: string) {
  * @param username. Username/Email of user
  */
 export async function getAccountByUsername(username: string) {
-  return fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.GET,
-    `${ACCOUNT_URI}/?username=${username}`
-  );
+  return fetcher(SERVICES.ACCOUNT, MethodTypes.GET, `${ACCOUNT_URI}/?username=${username}`);
 }
 
 export async function getPrivacySettings(userId: string) {
-  return fetcher(
-    SERVICES.ACCOUNT,
-    MethodTypes.GET,
-    `${ACCOUNT_URI}/privacy?userId=${userId}`
-  );
+  return fetcher(SERVICES.ACCOUNT, MethodTypes.GET, `${ACCOUNT_URI}/privacy?userId=${userId}`);
 }

@@ -13,7 +13,22 @@
     "test-all": "jest",
     "snapshot": "jest --updateSnapshot",
     "coverage": "jest --coverage",
+    "find:unused": "next-unused",
+    "depcheck": "npx depcheck",
     "prepare": "husky install"
+  },
+  "next-unused": {
+    "alias": {},
+    "debug": true,
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "__test__"
+    ],
+    "entrypoints": [
+      "src/app"
+    ]
   },
   "dependencies": {
     "@ag-grid-community/styles": "^30.2.1",
@@ -60,6 +75,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "depcheck": "^1.4.7",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "eslint-plugin-eslint-plugin": "^5.1.1",

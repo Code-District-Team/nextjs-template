@@ -1,9 +1,4 @@
-export const ENTITY_TYPES: string[] = [
-  'Branch',
-  'Independent',
-  'Parent',
-  'Subsidiary',
-];
+export const ENTITY_TYPES: string[] = ['Branch', 'Independent', 'Parent', 'Subsidiary'];
 export const CERTIFICATIONS: string[] = [
   'ISO 9001',
   'ISO 14001',

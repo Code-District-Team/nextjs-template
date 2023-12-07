@@ -102,9 +102,7 @@ export const filterBy = (filters: Filters, scope: Scope): void => {
     }
 
     if (selectedRegions && selectedRegions.length > 0) {
-      isInRegions = selectedRegions.includes(
-        `${user.stateRegion}|${user.country}`
-      );
+      isInRegions = selectedRegions.includes(`${user.stateRegion}|${user.country}`);
     }
 
     if (selectedDateRanges && selectedDateRanges.length > 0) {
@@ -116,9 +114,7 @@ export const filterBy = (filters: Filters, scope: Scope): void => {
       }).length;
     }
 
-    return (
-      inSearch && inFilter && isInDateRange && isInIndustries && isInRegions
-    );
+    return inSearch && inFilter && isInDateRange && isInIndustries && isInRegions;
   });
 
   setTableData([...filteredData]);
