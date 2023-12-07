@@ -17,6 +17,7 @@ const Login = () => {
     };
     await userLoginApi(userCreds);
   };
+  console.log('first');
   const user: any = getaCookie(cookieKeys.auth);
   return (
     <>
