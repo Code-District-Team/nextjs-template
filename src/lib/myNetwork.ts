@@ -21,7 +21,7 @@ export const setMenusWithBadges = (
   selectedMenu: number
 ) => {
   // Set the menus without waiting for the badge value
-  MY_NETWORK_MENUS.map(
+  MY_NETWORK_MENUS.forEach(
     (menu, index) => (menu.selected = index == selectedMenu)
   );
   setMenus(MY_NETWORK_MENUS);
