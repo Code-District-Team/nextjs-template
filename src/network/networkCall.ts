@@ -1,16 +1,16 @@
-import { permanentRedirect } from "next/navigation";
+import { permanentRedirect } from 'next/navigation';
 
-import K from "@/constants";
+import K from '@/constants';
 
 export default class NetworkCall {
   static async makeApiCall<T>(
     request: any,
-    cacheOptions: any = { cache: "no-store" },
+    cacheOptions: any = { cache: 'no-store' }
   ) {
     const options: RequestInit = {
       method: request.method,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         ...request.headers,
       },
       // Include credentials if your API requires it
@@ -23,22 +23,22 @@ export default class NetworkCall {
 
     try {
       let response;
-      if (request.method == "get") {
+      if (request.method == 'get') {
         response = await fetch(request.url, cacheOptions);
       } else {
         response = await fetch(request.url, options);
       }
       await this.handleResponseStatus(response);
 
-      const contentType = response.headers.get("content-type");
-      if (contentType?.includes("application/json")) {
+      const contentType = response.headers.get('content-type');
+      if (contentType?.includes('application/json')) {
         return await response.json();
       } else {
         // Handle other content types (e.g., text/plain) here
       }
     } catch (error: any) {
       // Handle network errors or other exceptions
-      console.error("Error:", error.message);
+      console.error('Error:', error.message);
       throw error;
     }
   }
@@ -61,13 +61,13 @@ export default class NetworkCall {
       case statusCode.Unauthorized:
         // Logout or redirect
         // permanentRedirect("/unauthorized");
-        throw new Error("Unauthorized");
+        throw new Error('Unauthorized');
       case statusCode.Forbidden:
         // Redirect to Forbidden Fallback UI
-        permanentRedirect("/unauthorized");
+        permanentRedirect('/unauthorized');
         break;
       case statusCode.ServerError:
-        console.error("Server error");
+        console.error('Server error');
         // Redirect to Server Error Fallback UI
         break;
       default:

@@ -9,7 +9,7 @@ export default class Storage {
 
   public constructor(
     getStorage = (): IStorage | null =>
-      typeof window !== "undefined" ? localStorage : null,
+      typeof window !== 'undefined' ? localStorage : null
   ) {
     this.storage = getStorage();
   }

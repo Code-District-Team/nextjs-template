@@ -1,5 +1,5 @@
 // import { BusinessItem, Folder } from "@/components/MyNetwork/types";
-import { User } from "@/types/models";
+import { User } from '@/types/models';
 
 export type ContactRequest = {
   isRequestConfirmed: string;

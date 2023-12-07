@@ -7,7 +7,7 @@ import {
   BusinessAddress,
   BusinessAdmin,
   BusinessSocialMediaLinks,
-} from "@/types/models/business";
+} from '@/types/models/business';
 
 export type User = Contact &
   SocialMediaLinks &
@@ -164,7 +164,7 @@ export type ProductTypes = {
 export type Incoterm = {
   id: string;
   name: string;
-  type: "any" | "waterway";
+  type: 'any' | 'waterway';
   title: string;
 };
 
@@ -177,12 +177,12 @@ export type InterestLevel = IdName;
 export type Market = IdNameValue;
 
 export type ServiceInterest = {
-  level: InterestLevel["id"];
-  service: ServiceType["id"];
+  level: InterestLevel['id'];
+  service: ServiceType['id'];
 };
 export type ProductInterest = {
-  level: InterestLevel["id"];
-  product: ProductCategory["id"];
+  level: InterestLevel['id'];
+  product: ProductCategory['id'];
 };
 
 export type BuyerIntent = {
@@ -213,11 +213,11 @@ export type RequestBCard = {
   accepted: PrivacySetting;
   isContacted: boolean;
   providing: PrivacySetting;
-  requestDirection: "in" | "out";
+  requestDirection: 'in' | 'out';
   requestMessage: string;
   requesting: PrivacySetting;
   sharing: PrivacySetting;
-  requestStatus: "CONFIRMED" | "CREATED" | "REVOKED";
+  requestStatus: 'CONFIRMED' | 'CREATED' | 'REVOKED';
 };
 
 export type BusinessInfo = {

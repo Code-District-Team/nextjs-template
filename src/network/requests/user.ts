@@ -1,5 +1,5 @@
-import K from "../../constants";
-import Request from ".";
+import K from '../../constants';
+import Request from '.';
 
 export default class UserRequest extends Request {
   static userLogin(body: any) {
@@ -8,7 +8,7 @@ export default class UserRequest extends Request {
       K.Network.Method.POST,
       body,
       K.Network.Header.Type.Json,
-      {},
+      {}
       // auth.loggedInUser?.token
     );
   }

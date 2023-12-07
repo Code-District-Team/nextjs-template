@@ -1,4 +1,4 @@
-const braintree = require("braintree");
+const braintree = require('braintree');
 
 const gateway = new braintree.BraintreeGateway({
   environment: braintree.Environment.Sandbox,

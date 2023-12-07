@@ -1,10 +1,10 @@
-import RegistrationStages from "@/constants/enums/registrationStages";
+import RegistrationStages from '@/constants/enums/registrationStages';
 
 export const PLANS = {
-  BASIC: "basic",
-  BUSINESS_PLUS: "business_plus",
-  EXECUTIVE: "executive",
-  INDIVIDUAL: "individual",
+  BASIC: 'basic',
+  BUSINESS_PLUS: 'business_plus',
+  EXECUTIVE: 'executive',
+  INDIVIDUAL: 'individual',
 };
 export const RegistrationScenarios: { [key: string]: string[] } = {
   [PLANS.BASIC]: [

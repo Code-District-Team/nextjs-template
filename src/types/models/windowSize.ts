@@ -8,8 +8,8 @@ export type sizeByMedia = {
   md?: number;
   lg?: number;
   xl?: number;
-  "2xl"?: number;
-  "3xl"?: number;
+  '2xl'?: number;
+  '3xl'?: number;
 };
 
-export type breakpoint = "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
+export type breakpoint = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';

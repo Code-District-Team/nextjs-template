@@ -1,4 +1,4 @@
-import { SystemNotice, Task, User } from "@/types/models";
+import { SystemNotice, Task, User } from '@/types/models';
 
 export type HomeProps = {
   boards: Board[];

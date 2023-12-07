@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { getPostsApi } from "@/network/apis/posts";
+import { getPostsApi } from '@/network/apis/posts';
 
 const FakePosts = () => {
   const [posts, setPosts] = useState([]);

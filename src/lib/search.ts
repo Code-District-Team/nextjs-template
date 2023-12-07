@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { SERVICES } from "@/constants/services";
-import { useInfiniteFetch } from "@/hooks/useFetch";
-import { APIResponseInfinite, ContactResponse } from "@/types/http";
-import { User } from "@/types/models";
+import { SERVICES } from '@/constants/services';
+import { useInfiniteFetch } from '@/hooks/useFetch';
+import { APIResponseInfinite, ContactResponse } from '@/types/http';
+import { User } from '@/types/models';
 
 export type searchParamsType = {
   limit?: number;
@@ -23,8 +23,8 @@ export type searchFiltersParamsType = {
   sort: string;
 };
 
-const SEARCH_ACCOUNT_URI = "api/v1/account";
-const SEARCH_BUSINESS_URI = "api/v1/business";
+const SEARCH_ACCOUNT_URI = 'api/v1/account';
+const SEARCH_BUSINESS_URI = 'api/v1/business';
 
 /**
  * Search for Users Accounts in the Website
@@ -32,16 +32,16 @@ const SEARCH_BUSINESS_URI = "api/v1/business";
  * @return Array of Accounts
  */
 export function useSearchForAccounts({
-  searchTerms = "",
+  searchTerms = '',
   filters = {},
 }: searchParamsType): APIResponseInfinite<ContactResponse> {
-  const body = { lastName: searchTerms || " ", ...filters };
+  const body = { lastName: searchTerms || ' ', ...filters };
 
   return useInfiniteFetch<ContactResponse>(
     SERVICES.ACCOUNT,
     SEARCH_ACCOUNT_URI,
     { body },
-    { revalidateOnFocus: false }, // no fetch on focus
+    { revalidateOnFocus: false } // no fetch on focus
   );
 }
 
@@ -51,12 +51,12 @@ export function useSearchForAccounts({
  * @return Array of Businesses
  */
 export function useSearchForBusinesses({
-  searchTerms = "",
+  searchTerms = '',
   filters = {},
 }: searchParamsType): APIResponseInfinite<ContactResponse> {
   const body = {
-    company: searchTerms ?? " ",
-    country: "United States",
+    company: searchTerms ?? ' ',
+    country: 'United States',
     ...filters,
   };
 
@@ -64,6 +64,6 @@ export function useSearchForBusinesses({
     SERVICES.ACCOUNT,
     SEARCH_BUSINESS_URI,
     { body },
-    { revalidateOnFocus: false }, // no fetch on focus
+    { revalidateOnFocus: false } // no fetch on focus
   );
 }

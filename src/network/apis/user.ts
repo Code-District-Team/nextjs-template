@@ -1,10 +1,10 @@
-import { cookieKeys } from "@/constants/cookiePreferences";
-import { setCookies } from "@/lib/cookies";
-import { store } from "@/store";
-import { setAuth } from "@/store/slices/auth";
+import { cookieKeys } from '@/constants/cookiePreferences';
+import { setCookies } from '@/lib/cookies';
+import { store } from '@/store';
+import { setAuth } from '@/store/slices/auth';
 
-import NetworkCall from "../networkCall";
-import UserRequest from "../requests/user";
+import NetworkCall from '../networkCall';
+import UserRequest from '../requests/user';
 
 export const userLoginApi = async (req: any) => {
   // reqBody: Record<string, any> | null

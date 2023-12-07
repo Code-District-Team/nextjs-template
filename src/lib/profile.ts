@@ -1,9 +1,9 @@
-import { SERVICES } from "@/constants/services";
-import { fetcher, FileAPIResponse, fileS3Uploader } from "@/lib/https";
-import { FileSignedUpResponse } from "@/types/http";
-import { MethodTypes } from "@/types/http/methodTypes";
-const SIGN_FILES_URI = "api/v1/files/signed-url";
-const DELETE_FILES_URI = "api/v1/files/";
+import { SERVICES } from '@/constants/services';
+import { fetcher, FileAPIResponse, fileS3Uploader } from '@/lib/https';
+import { FileSignedUpResponse } from '@/types/http';
+import { MethodTypes } from '@/types/http/methodTypes';
+const SIGN_FILES_URI = 'api/v1/files/signed-url';
+const DELETE_FILES_URI = 'api/v1/files/';
 
 export type signedUpBodyType = {
   fileName: string;
@@ -22,7 +22,7 @@ export type signedUpBodyType = {
  * @return parameters to upload File to S3
  */
 export async function getFileSignedUrl(
-  payload: signedUpBodyType,
+  payload: signedUpBodyType
 ): Promise<FileSignedUpResponse> {
   return fetcher(SERVICES.FILES, MethodTypes.POST, SIGN_FILES_URI, payload);
 }
@@ -33,7 +33,7 @@ export async function getFileSignedUrl(
  * @return fileDownloadUrl
  */
 export async function uploadFileToS3(
-  fileToUpload: File,
+  fileToUpload: File
 ): Promise<FileAPIResponse> {
   const { name, size } = fileToUpload;
 

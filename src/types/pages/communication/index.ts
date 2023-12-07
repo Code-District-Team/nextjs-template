@@ -1,1 +1,1 @@
-export * from "./communication.type";
+export * from './communication.type';

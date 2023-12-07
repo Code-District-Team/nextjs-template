@@ -1,4 +1,4 @@
-import { Business } from "@/types/models/business";
+import { Business } from '@/types/models/business';
 
 export type Product = {
   _id: string;
@@ -60,6 +60,6 @@ export type LeadTime = {
 };
 
 export enum ProductType {
-  SINGLE = "Single",
-  VARIATION = "Variation",
+  SINGLE = 'Single',
+  VARIATION = 'Variation',
 }

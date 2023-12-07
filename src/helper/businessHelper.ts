@@ -1,7 +1,7 @@
-import { BizProfile, Business, BusinessSocialMediaLinks } from "@/types/models";
+import { BizProfile, Business, BusinessSocialMediaLinks } from '@/types/models';
 
 export const getBusinessInfo = (
-  business: Business | undefined,
+  business: Business | undefined
 ): Business | undefined => {
   if (business) {
     return {
@@ -9,7 +9,7 @@ export const getBusinessInfo = (
         address1: business.addresses && business.addresses[0].address1,
         address2: business.addresses && business.addresses[0].address2,
         address3: business.addresses && business.addresses[0].address3,
-        addressType: "REG",
+        addressType: 'REG',
         addressZip: business.addresses && business.addresses[0].addressZip,
         city: business.addresses && business.addresses[0].city,
         country: business.addresses && business.addresses[0].country,
@@ -45,7 +45,7 @@ export const getBusinessInfo = (
 };
 
 export const getBusinessSocialLinks = (
-  business: (Business & BusinessSocialMediaLinks) | undefined,
+  business: (Business & BusinessSocialMediaLinks) | undefined
 ): BusinessSocialMediaLinks | undefined => {
   if (business) {
     return {
@@ -59,7 +59,7 @@ export const getBusinessSocialLinks = (
 };
 
 export const getBizProfile = (
-  business: (Business & BizProfile) | undefined,
+  business: (Business & BizProfile) | undefined
 ): BizProfile | undefined => {
   if (business) {
     return {

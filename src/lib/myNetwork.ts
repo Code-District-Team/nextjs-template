@@ -3,26 +3,26 @@ import {
   DEFAULT_PRIVACY_SETTING,
   MY_NETWORK_MENUS,
   PER_PAGE,
-} from "@/constants";
+} from '@/constants';
 import {
   BUSINESS_CARD_REQUEST_URI,
   CONTACTS_REQUEST_URI,
   SERVICES,
-} from "@/constants/services";
-import { useFetch } from "@/hooks/useFetch";
-import { fetcher, query } from "@/lib/https";
-import { APIResponse, RequestsResponse } from "@/types/http";
-import { MethodTypes } from "@/types/http/methodTypes";
-import { PrivacySetting, User } from "@/types/models";
+} from '@/constants/services';
+import { useFetch } from '@/hooks/useFetch';
+import { fetcher, query } from '@/lib/https';
+import { APIResponse, RequestsResponse } from '@/types/http';
+import { MethodTypes } from '@/types/http/methodTypes';
+import { PrivacySetting, User } from '@/types/models';
 
 export const setMenusWithBadges = (
   setMenus: Function,
   badge: string,
-  selectedMenu: number,
+  selectedMenu: number
 ) => {
   // Set the menus without waiting for the badge value
   MY_NETWORK_MENUS.map(
-    (menu, index) => (menu.selected = index == selectedMenu),
+    (menu, index) => (menu.selected = index == selectedMenu)
   );
   setMenus(MY_NETWORK_MENUS);
 
@@ -36,12 +36,12 @@ export const setMenusWithBadges = (
 export const useBCardRequestCount = (): string => {
   const { data } = useFetch<RequestsResponse>(
     SERVICES.ACCOUNT,
-    "api/v1/contact/request",
+    'api/v1/contact/request',
     {
-      body: { direction: "in" },
-    },
+      body: { direction: 'in' },
+    }
   );
-  return data?.count?.toString() ?? "";
+  return data?.count?.toString() ?? '';
 };
 
 type Item = User; //| BusinessItem;
@@ -64,7 +64,7 @@ export const removeItem = (index: number, setItems: Function) => {
 
 export const requestBCard = async (
   userId: string,
-  data: object,
+  data: object
 ): Promise<object> => {
   const params = {
     receiver: userId,
@@ -74,7 +74,7 @@ export const requestBCard = async (
     SERVICES.ACCOUNT,
     MethodTypes.POST,
     BUSINESS_CARD_REQUEST_URI + query(params),
-    data,
+    data
   );
 };
 
@@ -85,9 +85,9 @@ export const requestBCard = async (
  * @param page Page number of data
  */
 export const useBCards = (
-  status: "in" | "out",
+  status: 'in' | 'out',
   page: number = 0,
-  limit: number = PER_PAGE,
+  limit: number = PER_PAGE
 ): APIResponse<RequestsResponse> => {
   const params = { direction: status, limit, offset: page * limit };
 
@@ -95,7 +95,7 @@ export const useBCards = (
     SERVICES.ACCOUNT,
     CONTACTS_REQUEST_URI + query(params),
     undefined,
-    { revalidateOnFocus: false },
+    { revalidateOnFocus: false }
   );
 };
 
@@ -103,8 +103,8 @@ export const useBCards = (
  * Hook to get an Account Request Data (b-card)
  * @param userId User Id of a contact
  */
-export const useBCardInfo = (userId: string = ""): APIResponse<User> => {
-  const uri = CONTACTS_REQUEST_URI + (userId ? query({ userId }) : "");
+export const useBCardInfo = (userId: string = ''): APIResponse<User> => {
+  const uri = CONTACTS_REQUEST_URI + (userId ? query({ userId }) : '');
 
   return useFetch(SERVICES.ACCOUNT, uri, undefined, {
     revalidateOnFocus: false,
@@ -120,10 +120,10 @@ export const useBCardInfo = (userId: string = ""): APIResponse<User> => {
  */
 export const sendBCardRequests = (
   userIds: string[] = [],
-  message: string = "",
-  providing: PrivacySetting = {},
+  message: string = '',
+  providing: PrivacySetting = {}
 ) => {
-  const params = { direction: "out" };
+  const params = { direction: 'out' };
 
   const payload = {
     providing: { ...DEFAULT_PRIVACY_SETTING, ...providing },
@@ -135,7 +135,7 @@ export const sendBCardRequests = (
     SERVICES.ACCOUNT,
     MethodTypes.POST,
     CONTACTS_REQUEST_URI + query(params),
-    payload,
+    payload
   );
 };
 
@@ -148,9 +148,9 @@ export const sendBCardRequests = (
 export const acceptBCardRequests = (
   userIds: string[] = [],
   accepted: PrivacySetting = {},
-  message: string = "",
+  message: string = ''
 ) => {
-  const params = { direction: "in" };
+  const params = { direction: 'in' };
 
   const payload = {
     accepted: { ...DEFAULT_PRIVACY_SETTING, ...accepted },
@@ -162,7 +162,7 @@ export const acceptBCardRequests = (
     SERVICES.ACCOUNT,
     MethodTypes.POST,
     CONTACTS_REQUEST_URI + query(params),
-    payload,
+    payload
   );
 };
 
@@ -173,9 +173,9 @@ export const acceptBCardRequests = (
  */
 export const refuseBCardRequests = (
   userIds: string[] = [],
-  message: string = "",
+  message: string = ''
 ) => {
-  const params = { direction: "in" };
+  const params = { direction: 'in' };
 
   const payload = {
     requestMessage: message,
@@ -186,7 +186,7 @@ export const refuseBCardRequests = (
     SERVICES.ACCOUNT,
     MethodTypes.POST,
     CONTACTS_REQUEST_URI + query(params),
-    payload,
+    payload
   );
 };
 
@@ -197,9 +197,9 @@ export const refuseBCardRequests = (
  */
 export const revokeBCardRequests = (
   userIds: string[] = [],
-  message: string = "",
+  message: string = ''
 ) => {
-  const params = { direction: "out" };
+  const params = { direction: 'out' };
 
   const payload = {
     receivers: userIds,
@@ -210,7 +210,7 @@ export const revokeBCardRequests = (
     SERVICES.ACCOUNT,
     MethodTypes.PUT,
     CONTACTS_REQUEST_URI + query(params),
-    payload,
+    payload
   );
 };
 
@@ -221,12 +221,12 @@ export const revokeBCardRequests = (
  */
 export const updateContactPrivacySetting = (
   userId: string,
-  settings: PrivacySetting = {},
+  settings: PrivacySetting = {}
 ): Promise<RequestsResponse> => {
   return fetcher(
     SERVICES.ACCOUNT,
     MethodTypes.PUT,
     CONTACTS_REQUEST_URI + query({ userId }),
-    settings,
+    settings
   );
 };

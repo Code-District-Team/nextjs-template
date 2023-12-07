@@ -1,4 +1,4 @@
-import { Picture } from "../common/picture";
+import { Picture } from '../common/picture';
 
 export type Business = {
   businessId: string;
@@ -29,7 +29,7 @@ export type Business = {
   picture?: string;
   ref?: string;
   roles?: {
-    [key: string | number]: "USER" | "ADMIN";
+    [key: string | number]: 'USER' | 'ADMIN';
   };
   [key: string]: any;
 };
@@ -81,8 +81,8 @@ export type BusinessSocialMediaLinks = {
 };
 
 export enum BusinessAddressType {
-  REG = "REG",
-  OFFICE = "OFFICE",
+  REG = 'REG',
+  OFFICE = 'OFFICE',
 }
 export type BusinessAdmin = {
   id?: string;
@@ -105,4 +105,4 @@ export type carouselPicture = {
   position: number;
 };
 
-export type PresentationOption = "none" | "carousel" | "video";
+export type PresentationOption = 'none' | 'carousel' | 'video';

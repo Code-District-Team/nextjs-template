@@ -1,6 +1,6 @@
-import { Range } from "react-date-range";
+import { Range } from 'react-date-range';
 
-import { AdminActivity, Document, Invoice, Issue, User } from "@/types/models/";
+import { AdminActivity, Document, Invoice, Issue, User } from '@/types/models/';
 
 export type AdministratorsProps = {
   data: User[];

@@ -12,7 +12,8 @@
     "test": "jest --watch",
     "test-all": "jest",
     "snapshot": "jest --updateSnapshot",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@ag-grid-community/styles": "^30.2.1",
@@ -63,7 +64,9 @@
     "eslint-config-next": "14.0.3",
     "eslint-plugin-eslint-plugin": "^5.1.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "husky": "^8.0.0",
     "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^15.2.0",
     "next-translate-plugin": "^2.6.2",
     "typescript": "^5"
   },

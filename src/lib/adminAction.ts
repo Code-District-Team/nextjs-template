@@ -1,7 +1,7 @@
-import { Range } from "react-date-range";
+import { Range } from 'react-date-range';
 
-import { User } from "@/types/models";
-import { Filters, Model, Scope } from "@/types/pages/admin";
+import { User } from '@/types/models';
+import { Filters, Model, Scope } from '@/types/pages/admin';
 
 export const flag = (index: number, scope: Scope): void => {
   const { tableData, setTableData } = scope;
@@ -37,7 +37,7 @@ export const filterBy = (filters: Filters, scope: Scope): void => {
   } = filters;
   const { data, setTableData } = scope;
 
-  const regex = new RegExp(`.*${search}.*`, "i");
+  const regex = new RegExp(`.*${search}.*`, 'i');
   // use the current filtered data
   if (selectedOnly) {
     return;
@@ -72,7 +72,7 @@ export const filterBy = (filters: Filters, scope: Scope): void => {
     let isInRegions = true;
 
     if (search) {
-      inSearch = regex.test(user.firstName + " " + user.lastName);
+      inSearch = regex.test(user.firstName + ' ' + user.lastName);
     }
     if (flaggedOnly) {
       inFilter = !!item.flagged;
@@ -81,9 +81,9 @@ export const filterBy = (filters: Filters, scope: Scope): void => {
     } else if (accountType) {
       inFilter = user.type === accountType;
     } else if (supervisorsOnly) {
-      inFilter = !!user.is_supervisor && user.status !== "suspended";
+      inFilter = !!user.is_supervisor && user.status !== 'suspended';
     } else if (limitedAdminsOnly) {
-      inFilter = !user.is_supervisor && user.status !== "suspended";
+      inFilter = !user.is_supervisor && user.status !== 'suspended';
     } else if (actionType) {
       inFilter = item.action === actionType;
     } else if (invoiceStatus) {
@@ -103,14 +103,14 @@ export const filterBy = (filters: Filters, scope: Scope): void => {
 
     if (selectedRegions && selectedRegions.length > 0) {
       isInRegions = selectedRegions.includes(
-        `${user.stateRegion}|${user.country}`,
+        `${user.stateRegion}|${user.country}`
       );
     }
 
     if (selectedDateRanges && selectedDateRanges.length > 0) {
       isInDateRange = !!selectedDateRanges.filter((range: Range) => {
-        let startDate = new Date(range.startDate || "");
-        let endDate = new Date(range.endDate || "");
+        let startDate = new Date(range.startDate || '');
+        let endDate = new Date(range.endDate || '');
         let userDate = new Date(user.created_at as string);
         return userDate >= startDate && userDate <= endDate;
       }).length;
@@ -134,7 +134,7 @@ export const clear = (index: number, scope: Scope): void => {
     tableUser = tableData[index].user as User;
   }
   // set account status to active
-  tableUser.status = "active";
+  tableUser.status = 'active';
   setTableData([...tableData]);
   // TODO: persist the change in backend
 };
@@ -149,7 +149,7 @@ export const suspend = (index: number, scope: Scope): void => {
     tableUser = tableData[index].user as User;
   }
   // suspend user account
-  tableUser.status = "suspended";
+  tableUser.status = 'suspended';
   setTableData([...tableData]);
   // TODO: persist the change in backend
 };
@@ -164,7 +164,7 @@ export const cancel = (index: number, scope: Scope): void => {
     tableUser = tableData[index].user as User;
   }
   // cancel user account
-  tableUser.status = "cancelled";
+  tableUser.status = 'cancelled';
   setTableData([...tableData]);
   // TODO: persist the change in backend
 };
@@ -179,7 +179,7 @@ export const setDisputed = (index: number, scope: Scope): void => {
     tableUser = tableData[index].user as User;
   }
   // set user account disputed
-  tableUser.status = "disputed";
+  tableUser.status = 'disputed';
   setTableData([...tableData]);
   // TODO: persist the change in backend
 };
@@ -194,7 +194,7 @@ export const setUnderReview = (index: number, scope: Scope): void => {
     tableUser = tableData[index].user as User;
   }
   // set user account under review
-  tableUser.status = "under_review";
+  tableUser.status = 'under_review';
   setTableData([...tableData]);
   // TODO: persist the change in backend
 };
@@ -208,9 +208,9 @@ export const resetAccount = (index: number, scope: Scope): void => {
   } else {
     tableUser = tableData[index].user as User;
   }
-  tableUser.status = "cancelled";
-  tableUser.email = "";
+  tableUser.status = 'cancelled';
+  tableUser.email = '';
   setTableData([...tableData]);
   // TODO cancel current user and allow a new user to claim
-  console.log("reset", index);
+  console.log('reset', index);
 };

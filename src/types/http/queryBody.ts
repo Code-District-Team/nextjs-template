@@ -1,4 +1,4 @@
-import { MethodTypes } from "./methodTypes";
+import { MethodTypes } from './methodTypes';
 
 export type QueryBody = {
   method?: MethodTypes;

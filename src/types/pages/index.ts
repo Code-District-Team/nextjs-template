@@ -1,1 +1,1 @@
-export * from "./home.type";
+export * from './home.type';

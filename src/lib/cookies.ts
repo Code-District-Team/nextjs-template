@@ -4,17 +4,17 @@ import {
   getCookies,
   hasCookie,
   setCookie,
-} from "cookies-next";
+} from 'cookies-next';
 
 let cookies: () => ReadonlyRequestCookies;
 
-import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 
-import { isServer } from "./utils";
+import { isServer } from './utils';
 
 if (isServer()) {
   // This code runs on the server
-  import("next/headers").then((headersModule) => {
+  import('next/headers').then(headersModule => {
     cookies = headersModule.cookies;
   });
 }
