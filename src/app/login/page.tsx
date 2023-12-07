@@ -5,19 +5,23 @@ import { cookieKeys } from '@/constants/cookiePreferences';
 import { deleteCookies, getaCookie } from '@/lib/cookies';
 import { userLoginApi } from '@/network/apis/user';
 
+interface UserCredentials {
+  username: string;
+  password: string;
+}
+
 const Login = () => {
   const [isClient, setIsClient] = useState(false);
   useEffect(() => {
     setIsClient(true);
   }, []);
   const handleLogin = async () => {
-    const userCreds = {
+    const userCreds: UserCredentials = {
       username: 'kminchelle',
       password: '0lelplR',
     };
     await userLoginApi(userCreds);
   };
-  console.log('first');
   const user: any = getaCookie(cookieKeys.auth);
   return (
     <>

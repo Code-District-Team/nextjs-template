@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 
-// import './globals.css'
 import ThemeRegistry from '../lib/muiRegistry';
 import { Providers } from '../store/storeProvider';
 
@@ -31,6 +30,8 @@ export default function RootLayout({
               <Link href="/redux">Redux Counter</Link>
               <Link href="/mui">Mui</Link>
               <Link href="/ag-grid">AG Grid</Link>
+              <Link href="/braintree">Braintree</Link>
+              <Link href="/login">Login</Link>
             </div>
             <Providers>{children}</Providers>
           </>

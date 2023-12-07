@@ -17,21 +17,18 @@
     "react-hooks/exhaustive-deps": 0,
     "react/prop-types": 0,
     "no-await-in-loop": 0,
-    "no-empty": 0,
-    "no-useless-escape": 0,
+    "no-empty": 0, // no empty blocks like catch(err){}
+    "no-useless-escape": 0, // disallows unnecessary escape characters
     "no-debugger": 0,
     "no-console": 0,
     "no-unused-vars": [
-      0,
-      {
-        "varsIgnorePattern": "Window"
-      }
+      0
     ],
     "filenames-simple/naming-convention": [
       0,
       {
-        "rule": "CamelCase",
-        "excepts": ["page", "index"]
+        "rule": "CamelCase"
+        // "excepts": []
       }
     ],
     "react/sort-comp": [
@@ -57,8 +54,8 @@
         }
       }
     ],
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/imports": 1,
+    "simple-import-sort/exports": 1
     // "eslint-plugin-eslint-plugin/order-in-components": [
     //   "error",
     //   {
