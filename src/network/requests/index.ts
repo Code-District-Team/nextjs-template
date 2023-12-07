@@ -1,25 +1,35 @@
+import { CookieValueTypes } from 'cookies-next';
+
 import { cookieKeys } from '@/constants/cookiePreferences';
 import { getaCookie } from '@/lib/cookies';
 
 import K from '../../constants';
 
+interface Headers {
+  [key: string]: string;
+}
+
 export default class Request {
-  url: string = '';
-  method: string = '';
+  url: string;
+  method: string;
   body: any;
-  headers: any;
+  headers: Headers;
 
   constructor(
     relativeURL: string,
-    method = K.Network.Method.GET,
-    body = null,
-    defaultHeaderType = K.Network.Header.Type.Json,
-    headers = {},
-    token = null
+    method: string = K.Network.Method.GET,
+    body: any = null,
+    defaultHeaderType: string = K.Network.Header.Type.Json,
+    headers: Headers = {}
   ) {
-    const user: any = getaCookie(cookieKeys.auth);
+    const userCookie: CookieValueTypes = getaCookie(cookieKeys.auth);
+    let bearerToken: string = '';
 
-    let bearerToken = user ? JSON.parse(user)?.token : '';
+    // Check userCookie is a string and not undefined
+    if (typeof userCookie === 'string') {
+      const user = JSON.parse(userCookie);
+      bearerToken = user?.token ?? '';
+    }
     headers = {
       ...(defaultHeaderType === K.Network.Header.Type.Json ||
       defaultHeaderType === K.Network.Header.Type.formData
@@ -27,6 +37,7 @@ export default class Request {
         : K.Network.Header.Authorization()),
       ...headers,
     };
+
     this.url = relativeURL;
     this.method = method;
     this.body = body;

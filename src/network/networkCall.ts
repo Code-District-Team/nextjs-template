@@ -2,19 +2,24 @@ import { permanentRedirect } from 'next/navigation';
 
 import K from '@/constants';
 
+interface IRequest {
+  url: string;
+  method: string; // 'GET', 'POST', etc.
+  body?: any;
+  headers?: { [key: string]: string };
+}
+
 export default class NetworkCall {
   static async makeApiCall<T>(
-    request: any,
-    cacheOptions: any = { cache: 'no-store' }
-  ) {
+    request: IRequest,
+    cacheOptions: RequestInit = { cache: 'no-store' }
+  ): Promise<T> {
     const options: RequestInit = {
       method: request.method,
       headers: {
         'Content-Type': 'application/json',
         ...request.headers,
       },
-      // Include credentials if your API requires it
-      // credentials: 'include',
     };
 
     if (request.body) {
@@ -22,8 +27,8 @@ export default class NetworkCall {
     }
 
     try {
-      let response;
-      if (request.method == 'get') {
+      let response: Response;
+      if (request.method.toLowerCase() === 'get') {
         response = await fetch(request.url, cacheOptions);
       } else {
         response = await fetch(request.url, options);
@@ -32,14 +37,18 @@ export default class NetworkCall {
 
       const contentType = response.headers.get('content-type');
       if (contentType?.includes('application/json')) {
-        return await response.json();
+        return (await response.json()) as T;
       } else {
         // Handle other content types (e.g., text/plain) here
+        // Make sure to return something of type T or throw an error
+        throw new Error('Unsupported content type: ' + contentType);
       }
-    } catch (error: any) {
-      // Handle network errors or other exceptions
-      console.error('Error:', error.message);
-      throw error;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error('Error:', error.message);
+        throw error;
+      }
+      throw new Error('An unknown error occurred');
     }
   }
 
