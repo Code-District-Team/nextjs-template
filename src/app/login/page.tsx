@@ -4,11 +4,7 @@ import { useEffect, useState } from 'react';
 import { cookieKeys } from '@/constants/cookiePreferences';
 import { deleteCookies, getaCookie } from '@/lib/cookies';
 import { userLoginApi } from '@/network/apis/user';
-
-interface UserCredentials {
-  username: string;
-  password: string;
-}
+import { LoginPayload } from '@/types/models';
 
 const Login = () => {
   const [isClient, setIsClient] = useState(false);
@@ -16,7 +12,7 @@ const Login = () => {
     setIsClient(true);
   }, []);
   const handleLogin = async () => {
-    const userCreds: UserCredentials = {
+    const userCreds: LoginPayload = {
       username: 'kminchelle',
       password: '0lelplR',
     };

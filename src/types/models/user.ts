@@ -243,3 +243,18 @@ export type Counters = {
   followers: number;
   endorsements: number;
 };
+
+export type LoginPayload = {
+  username: string;
+  password: string;
+};
+export type LoginResponse = {
+  id: number;
+  email: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  image: string;
+  token: string;
+};

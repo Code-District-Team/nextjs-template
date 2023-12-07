@@ -2,7 +2,7 @@ import K from '@/constants';
 
 interface IRequest {
   url: string;
-  method: string; // 'GET', 'POST', etc.
+  method: string;
   body?: any;
   headers?: { [key: string]: string };
 }
