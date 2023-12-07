@@ -1,4 +1,4 @@
-import { User } from "@/types/models/user";
+import { User } from '@/types/models/user';
 
 export type Chat = {
   _id: string;

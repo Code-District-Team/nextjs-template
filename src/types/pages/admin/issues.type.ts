@@ -1,4 +1,4 @@
-import { Issue } from "@/types/models/";
+import { Issue } from '@/types/models/';
 
 export type IssuesProps = {
   data: Issue[];

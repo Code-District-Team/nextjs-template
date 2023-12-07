@@ -1,4 +1,4 @@
-import { CustomError } from "@/types/http/error";
+import { CustomError } from '@/types/http/error';
 
 export type APIResponse<T> = {
   error: CustomError;
@@ -31,11 +31,11 @@ export type FileSignedUpResponse = {
     Key: string;
     Policy: string;
     success_action_status: string;
-    "X-Amz-Algorithm": string;
-    "X-Amz-Credential": string;
-    "X-Amz-Date": string;
-    "X-Amz-Security-Token": string;
-    "X-Amz-Signature": string;
+    'X-Amz-Algorithm': string;
+    'X-Amz-Credential': string;
+    'X-Amz-Date': string;
+    'X-Amz-Security-Token': string;
+    'X-Amz-Signature': string;
   };
   url: string;
 };

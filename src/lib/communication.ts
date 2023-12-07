@@ -1,8 +1,8 @@
-import { SERVICES } from "@/constants/services";
-import { useFetch } from "@/hooks/useFetch";
-import { fetcher } from "@/lib/https";
-import { APIResponse } from "@/types/http";
-import { MethodTypes } from "@/types/http/methodTypes";
+import { SERVICES } from '@/constants/services';
+import { useFetch } from '@/hooks/useFetch';
+import { fetcher } from '@/lib/https';
+import { APIResponse } from '@/types/http';
+import { MethodTypes } from '@/types/http/methodTypes';
 
 import {
   ConversationResponse,
@@ -13,10 +13,10 @@ import {
   NewConversationPayload,
   NewMessagePayload,
   NewParticipantPayload,
-} from "./communication.type";
-const CONV_URI = "api/v1/chat/conversations";
-const DIR_URI = "api/v1/chat/directories";
-const MSG_URI = "api/v1/chat/messages";
+} from './communication.type';
+const CONV_URI = 'api/v1/chat/conversations';
+const DIR_URI = 'api/v1/chat/directories';
+const MSG_URI = 'api/v1/chat/messages';
 const LIMIT = 10;
 /**
  * Read Directories of chats
@@ -31,9 +31,9 @@ export function useDirectories(): APIResponse<DirectoryResponse> {
  */
 
 export function useFilter(
-  filter: string | null,
+  filter: string | null
 ): APIResponse<ConversationResponse> {
-  let uri = "";
+  let uri = '';
   if (filter) {
     uri = `${CONV_URI}/${filter}`;
   }
@@ -45,9 +45,9 @@ export function useFilter(
  */
 
 export function useConversations(
-  folder: string | undefined,
+  folder: string | undefined
 ): APIResponse<ConversationResponse> {
-  let uri = "";
+  let uri = '';
   if (folder) {
     uri = `${CONV_URI}?path=${folder}`;
   }
@@ -59,9 +59,9 @@ export function useConversations(
  */
 
 export function useConversationById(
-  id: string,
+  id: string
 ): APIResponse<ConversationResponse> {
-  let uri = "";
+  let uri = '';
   if (id) {
     uri = `${CONV_URI}?id=${id}`;
   }
@@ -73,9 +73,9 @@ export function useConversationById(
  */
 
 export function useSearchConversations(
-  term: string,
+  term: string
 ): APIResponse<ConversationResponse> {
-  let uri = "";
+  let uri = '';
   if (term) {
     uri = `${CONV_URI}?term=${term}`;
   }
@@ -90,10 +90,10 @@ export function useSearchConversations(
 export function useConversationMessages(
   conversationId: string,
   nextPageKey: string | undefined,
-  limit = LIMIT,
+  limit = LIMIT
 ): APIResponse<MessagesResponse> {
-  let uri = "";
-  let pageKeyStr = "";
+  let uri = '';
+  let pageKeyStr = '';
   if (nextPageKey) {
     pageKeyStr = `&pageKey=${nextPageKey}`;
   }
@@ -108,9 +108,9 @@ export function useConversationMessages(
  */
 
 export function useConversation(
-  conversationId: string | null,
+  conversationId: string | null
 ): APIResponse<ConversationResponse> {
-  let uri = "";
+  let uri = '';
   if (conversationId) {
     uri = `${CONV_URI}?id=${conversationId}`;
   }
@@ -179,7 +179,7 @@ export function createFolder(payload: CreateDirectoryPayload) {
  * @param payload
  */
 export function moveConversation(payload: MoveDirectoryPayload) {
-  const uri = CONV_URI + "/move";
+  const uri = CONV_URI + '/move';
   return fetcher(SERVICES.CHAT, MethodTypes.POST, uri, payload);
 }
 
@@ -196,7 +196,7 @@ export function createConversation(payload: NewConversationPayload) {
  * @param payload
  */
 export function markConversationFlagged(payload: { conversationId: string }) {
-  const uri = CONV_URI + "/flag";
+  const uri = CONV_URI + '/flag';
 
   return fetcher(SERVICES.CHAT, MethodTypes.POST, uri, payload);
 }
@@ -206,7 +206,7 @@ export function markConversationFlagged(payload: { conversationId: string }) {
  * @param payload
  */
 export function markConversationUnFlagged(payload: { conversationId: string }) {
-  const uri = CONV_URI + "/unflag";
+  const uri = CONV_URI + '/unflag';
 
   return fetcher(SERVICES.CHAT, MethodTypes.POST, uri, payload);
 }
@@ -219,7 +219,7 @@ export function markConversationRead(payload: {
   conversationId: string;
   timestamp: Date;
 }) {
-  const uri = CONV_URI + "/read";
+  const uri = CONV_URI + '/read';
 
   return fetcher(SERVICES.CHAT, MethodTypes.POST, uri, payload);
 }
@@ -232,7 +232,7 @@ export function renameConversationTitle(payload: {
   conversationId: string;
   title: string;
 }) {
-  const uri = CONV_URI + "/rename";
+  const uri = CONV_URI + '/rename';
 
   return fetcher(SERVICES.CHAT, MethodTypes.POST, uri, payload);
 }
@@ -252,9 +252,9 @@ export const getDirectoryCacheKey = () => {
 export const getMessagesCacheKey = (
   conversationId: string,
   nextPageKey: string,
-  limit = LIMIT,
+  limit = LIMIT
 ) => {
-  let pageKeyStr = "";
+  let pageKeyStr = '';
   if (nextPageKey) {
     pageKeyStr = `&pageKey=${nextPageKey}`;
   }

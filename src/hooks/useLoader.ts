@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const defaultErrorHandler = (error: Error) => {
   console.log(error);
@@ -8,7 +8,7 @@ const defaultErrorHandler = (error: Error) => {
 export const useLoader = (
   uploadAction: Function,
   loaderSetter?: Function,
-  errorHandler: Function = defaultErrorHandler,
+  errorHandler: Function = defaultErrorHandler
 ) => {
   const [isLoading, setIsLoading] = useState(false);
 

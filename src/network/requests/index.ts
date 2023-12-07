@@ -1,11 +1,11 @@
-import { cookieKeys } from "@/constants/cookiePreferences";
-import { getaCookie } from "@/lib/cookies";
+import { cookieKeys } from '@/constants/cookiePreferences';
+import { getaCookie } from '@/lib/cookies';
 
-import K from "../../constants";
+import K from '../../constants';
 
 export default class Request {
-  url: string = "";
-  method: string = "";
+  url: string = '';
+  method: string = '';
   body: any;
   headers: any;
 
@@ -15,11 +15,11 @@ export default class Request {
     body = null,
     defaultHeaderType = K.Network.Header.Type.Json,
     headers = {},
-    token = null,
+    token = null
   ) {
     const user: any = getaCookie(cookieKeys.auth);
 
-    let bearerToken = user ? JSON.parse(user)?.token : "";
+    let bearerToken = user ? JSON.parse(user)?.token : '';
     headers = {
       ...(defaultHeaderType === K.Network.Header.Type.Json ||
       defaultHeaderType === K.Network.Header.Type.formData

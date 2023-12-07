@@ -1,12 +1,12 @@
-import { Area } from "react-easy-crop";
+import { Area } from 'react-easy-crop';
 
-import { getBlobFromCanvas } from "@/lib/utils";
+import { getBlobFromCanvas } from '@/lib/utils';
 
 export const createImage = (url: string): Promise<HTMLImageElement> =>
   new Promise((resolve, reject) => {
     const image = new Image();
-    image.addEventListener("load", () => resolve(image));
-    image.addEventListener("error", (error) => reject(error));
+    image.addEventListener('load', () => resolve(image));
+    image.addEventListener('error', error => reject(error));
     image.src = url;
   });
 
@@ -30,11 +30,11 @@ export async function getCroppedImg(
   file: File,
   pixelCrop: Area,
   rotation = 0,
-  flip = { horizontal: false, vertical: false },
+  flip = { horizontal: false, vertical: false }
 ) {
   const image = await createImage(imageSrc);
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
 
   if (!ctx) {
     return null;
@@ -46,7 +46,7 @@ export async function getCroppedImg(
   const { width: bBoxWidth, height: bBoxHeight } = rotateSize(
     image.width,
     image.height,
-    rotation,
+    rotation
   );
 
   // set canvas size to match the bounding box
@@ -68,7 +68,7 @@ export async function getCroppedImg(
     pixelCrop.x,
     pixelCrop.y,
     pixelCrop.width,
-    pixelCrop.height,
+    pixelCrop.height
   );
 
   // set canvas width to final desired crop size - this will clear existing context
@@ -84,11 +84,11 @@ export async function getCroppedImg(
 
 export async function getRotatedImage(
   imageSrc: string,
-  rotation = 0,
+  rotation = 0
 ): Promise<string> {
   const image: HTMLImageElement = await createImage(imageSrc);
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d")!;
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d')!;
 
   const orientationChanged =
     rotation === 90 ||
@@ -107,9 +107,9 @@ export async function getRotatedImage(
   ctx.rotate((rotation * Math.PI) / 180);
   ctx.drawImage(image, -image.width / 2, -image.height / 2);
 
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     canvas.toBlob((file: any) => {
       resolve(URL.createObjectURL(file));
-    }, "image/png");
+    }, 'image/png');
   });
 }

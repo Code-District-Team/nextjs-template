@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 export default function GlobalError({
   error,
@@ -7,7 +7,7 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  console.log("global error", error);
+  console.log('global error', error);
   return (
     <html>
       <body>

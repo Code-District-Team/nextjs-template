@@ -1,4 +1,4 @@
-import { Invoice } from "@/types/models";
+import { Invoice } from '@/types/models';
 
 export type MyAccountProps = {
   invoices: Invoice[];

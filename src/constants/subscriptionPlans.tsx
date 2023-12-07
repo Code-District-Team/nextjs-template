@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 // import { SubscriptionPlan } from "@/components/Registration/types";
 
@@ -6,7 +6,7 @@ export const SubscriptionPlans = [
   {
     planName: <>Business Basic</>,
     price: 0,
-    type: "basic",
+    type: 'basic',
   },
   {
     icon: (
@@ -23,12 +23,12 @@ export const SubscriptionPlans = [
       </>
     ),
     price: 7.99,
-    type: "business_plus",
+    type: 'business_plus',
   },
   {
     planName: <>Individual</>,
     price: 0,
-    type: "individual",
+    type: 'individual',
   },
   {
     icon: (
@@ -41,6 +41,6 @@ export const SubscriptionPlans = [
     ),
     planName: <span className="font-bold">Executive</span>,
     price: 5.99,
-    type: "executive",
+    type: 'executive',
   },
 ];

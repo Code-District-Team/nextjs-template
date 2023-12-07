@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 import {
   BuyerIntent,
@@ -7,10 +7,10 @@ import {
   SocialMediaLinks,
   Subscription,
   User,
-} from "@/types/models";
+} from '@/types/models';
 
 export const getContactInfo = (
-  user: User | undefined,
+  user: User | undefined
 ): Partial<Contact> | undefined => {
   if (user) {
     return {
@@ -40,7 +40,7 @@ export const getContactInfo = (
 };
 
 export const getSocialLinks = (
-  user: User | undefined,
+  user: User | undefined
 ): Partial<SocialMediaLinks> | undefined => {
   if (user) {
     return {
@@ -56,9 +56,9 @@ export const getSocialLinks = (
 export const getSubscription = (user?: User): Subscription | undefined => {
   if (user) {
     return {
-      end_date: dayjs().format("MMMM DD, YYYY"), // format can be defined globally
+      end_date: dayjs().format('MMMM DD, YYYY'), // format can be defined globally
       membershipType: user.membershipType,
-      start_date: dayjs().format("MMMM DD, YYYY"),
+      start_date: dayjs().format('MMMM DD, YYYY'),
     };
   }
 };
@@ -75,7 +75,7 @@ export const getBuyerIntent = (user: User): BuyerIntent | undefined => {
 };
 
 export const getProfilePreview = (
-  user: User | undefined,
+  user: User | undefined
 ): ProfilePreview | undefined => {
   if (user) {
     return {

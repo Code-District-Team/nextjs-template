@@ -1,9 +1,9 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import React from "react";
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import React from 'react';
 
-import RecipeReviewCard from "../card";
+import RecipeReviewCard from '../card';
 
-test("expands and collapses card content on button click", async () => {
+test('expands and collapses card content on button click', async () => {
   let target = render(<RecipeReviewCard />);
   expect(target).toMatchSnapshot();
   // Card should start in a collapsed state

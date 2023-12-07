@@ -1,8 +1,9 @@
-"use client";
-import { useEffect, useState } from "react";
+'use client';
+import { useEffect, useState } from 'react';
 
-import { deleteCookies, getaCookie } from "@/lib/cookies";
-import { userLoginApi } from "@/network/apis/user";
+import { cookieKeys } from '@/constants/cookiePreferences';
+import { deleteCookies, getaCookie } from '@/lib/cookies';
+import { userLoginApi } from '@/network/apis/user';
 
 const Login = () => {
   const [isClient, setIsClient] = useState(false);
@@ -11,17 +12,16 @@ const Login = () => {
   }, []);
   const handleLogin = async () => {
     const userCreds = {
-      username: "kminchelle",
-      password: "0lelplR",
+      username: 'kminchelle',
+      password: '0lelplR',
     };
     await userLoginApi(userCreds);
   };
-  const user: any = getaCookie("auth");
+  const user: any = getaCookie(cookieKeys.auth);
   return (
     <>
       <button onClick={() => handleLogin()}>Login</button>
-      <button onClick={() => deleteCookies("auth")}>Clear cookies</button>
-
+      <button onClick={() => deleteCookies('auth')}>Clear cookies</button>
       {isClient && <h1>{user && JSON.parse(user).username}</h1>}
     </>
   );

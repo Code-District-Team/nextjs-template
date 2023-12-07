@@ -1,9 +1,9 @@
-import { SERVICES } from "@/constants/services";
-import { useFetch } from "@/hooks/useFetch";
-import { APIResponse } from "@/types/http";
-import { MethodTypes } from "@/types/http/methodTypes";
+import { SERVICES } from '@/constants/services';
+import { useFetch } from '@/hooks/useFetch';
+import { APIResponse } from '@/types/http';
+import { MethodTypes } from '@/types/http/methodTypes';
 
-import { fetcher } from "./https";
+import { fetcher } from './https';
 
 export type notificationApiType = {
   content: string;
@@ -26,11 +26,11 @@ export type notificationApiResponse = {
 export function useNotifications(): APIResponse<notificationApiResponse> {
   return useFetch<any>(
     SERVICES.NOTIFICATION,
-    "/api/v1/user-notification",
+    '/api/v1/user-notification',
     undefined,
     {
       revalidateOnFocus: false,
-    },
+    }
   );
 }
 
@@ -41,6 +41,6 @@ export function readNotification(notificationId: string) {
   return fetcher(
     SERVICES.NOTIFICATION,
     MethodTypes.PUT,
-    "/api/v1/user-notification/read/" + notificationId,
+    '/api/v1/user-notification/read/' + notificationId
   );
 }

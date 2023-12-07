@@ -1,11 +1,11 @@
-import { SERVICES_FALLBACK } from "@/constants/services";
-import { fetcher } from "@/lib/https";
-import Storage from "@/lib/storage";
-import { MethodTypes } from "@/types/http/methodTypes";
+import { SERVICES_FALLBACK } from '@/constants/services';
+import { fetcher } from '@/lib/https';
+import Storage from '@/lib/storage';
+import { MethodTypes } from '@/types/http/methodTypes';
 
 class ServiceDiscovery {
   private readonly storage: Storage;
-  private key = "services";
+  private key = 'services';
   private ttl = 3600; // Need to discuss with Marko what should be optimum value
 
   public constructor() {
@@ -13,7 +13,7 @@ class ServiceDiscovery {
   }
   private async fetchServices() {
     const sdUrl = process.env.SD_URL as string;
-    return fetcher("", MethodTypes.GET, sdUrl, null, null);
+    return fetcher('', MethodTypes.GET, sdUrl, null, null);
   }
   async get(service: string) {
     try {
@@ -27,14 +27,14 @@ class ServiceDiscovery {
 
       if (
         services &&
-        (services[service] === undefined || services[service] === "")
+        (services[service] === undefined || services[service] === '')
       ) {
         return SERVICES_FALLBACK[service];
       } else {
         return services[service];
       }
     } catch (e) {
-      throw new Error("Service not working. Try again later");
+      throw new Error('Service not working. Try again later');
       //@TODO needs to address the cases when TTL is not expired but service url is changed
       // IF service discovery itself is down
     }

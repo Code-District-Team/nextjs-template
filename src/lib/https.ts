@@ -1,9 +1,9 @@
-import { xml2js } from "xml-js";
+import { xml2js } from 'xml-js';
 
 // import { getIdToken, logout } from "@/lib/auth";
-import serviceDiscovery from "@/lib/serviceDiscovery";
-import { CustomError, FileSignedUpResponse } from "@/types/http";
-import { MethodTypes } from "@/types/http/methodTypes";
+import serviceDiscovery from '@/lib/serviceDiscovery';
+import { CustomError, FileSignedUpResponse } from '@/types/http';
+import { MethodTypes } from '@/types/http/methodTypes';
 
 export type APIResponse<T = object> = {
   success: boolean;
@@ -38,9 +38,9 @@ export type XmlToJsonResult = {
 export function query(obj: any) {
   const params = [];
   for (const key in obj) {
-    params.push(encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]));
+    params.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]));
   }
-  return "?" + params.join("&");
+  return '?' + params.join('&');
 }
 
 const handleSuccess = (response: Response, responseJson: any): APIResponse => {
@@ -74,36 +74,36 @@ export async function fetcher(
   path: string,
   params?: object | string | null,
   headers?: { [key: string]: string } | null,
-  useToken: boolean = true,
+  useToken: boolean = true
 ) {
   let body;
   let response: Response;
-  let serviceUrl = "";
+  let serviceUrl = '';
 
   // Common headers
   headers = {
-    Accept: "application/json",
-    "Accept-Language": "en",
+    Accept: 'application/json',
+    'Accept-Language': 'en',
     ...headers,
   };
 
   // Headers to exclude if request is service discovery or without authentication
   // const token = await getIdToken(); // TODO: Add getIdToken method after implement auth.ts in lib
-  const token = "auth_token_here";
+  const token = 'auth_token_here';
   if (useToken && !token) return false; // quit if no token
 
   if (SERVICE && useToken && token) {
     headers = {
       ...headers,
       Authorization: `Bearer ${token}`,
-      "Content-Type":
-        typeof params === "string" ? "text/plain" : "application/json",
-      mode: "cors",
+      'Content-Type':
+        typeof params === 'string' ? 'text/plain' : 'application/json',
+      mode: 'cors',
     };
   }
 
   // Set up GET params
-  if (params && method.toLowerCase() === "get") {
+  if (params && method.toLowerCase() === 'get') {
     path += query(params);
     body = null;
   }
@@ -111,7 +111,7 @@ export async function fetcher(
   else if (
     params &&
     headers &&
-    headers["Content-Type"] !== "multipart/form-data"
+    headers['Content-Type'] !== 'multipart/form-data'
   ) {
     body = JSON.stringify(params);
   }
@@ -159,7 +159,7 @@ export async function fetcher(
  */
 export async function fileS3Uploader(
   signData: FileSignedUpResponse,
-  file: File,
+  file: File
 ): Promise<FileAPIResponse> {
   const formData = new FormData();
 
@@ -167,7 +167,7 @@ export async function fileS3Uploader(
     formData.append(key, value);
   });
 
-  formData.append("file", file, file.name);
+  formData.append('file', file, file.name);
 
   let options = {
     body: formData,
@@ -186,12 +186,12 @@ export async function fileS3Uploader(
     Object.entries(parsedResponse.PostResponse).forEach(
       ([key, value]: [string, any]) => {
         data[key] = value._text;
-      },
+      }
     );
 
     return handleSuccess(response, data) as FileAPIResponse;
   } catch (error) {
-    console.log("Http Error: ", error);
+    console.log('Http Error: ', error);
     return { status: 500, success: false };
   }
 }

@@ -1,4 +1,4 @@
-import { ChatMessage, Conversation, Directory } from "@/types/models";
+import { ChatMessage, Conversation, Directory } from '@/types/models';
 
 export type DirectoryResponse = {
   items: Directory[];

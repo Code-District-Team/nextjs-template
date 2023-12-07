@@ -1,17 +1,17 @@
-import useSWR, { SWRConfiguration } from "swr";
-import useSWRInfinite, { SWRInfiniteConfiguration } from "swr/infinite";
+import useSWR, { SWRConfiguration } from 'swr';
+import useSWRInfinite, { SWRInfiniteConfiguration } from 'swr/infinite';
 
-import { PER_PAGE } from "@/constants";
-import { fetcher } from "@/lib/https";
-import { APIResponse, APIResponseInfinite, QueryBody } from "@/types/http";
-import { MethodTypes } from "@/types/http/methodTypes";
+import { PER_PAGE } from '@/constants';
+import { fetcher } from '@/lib/https';
+import { APIResponse, APIResponseInfinite, QueryBody } from '@/types/http';
+import { MethodTypes } from '@/types/http/methodTypes';
 
 export const useFetch = <T>(
   service: string,
   url: string,
   payload?: QueryBody,
   options?: SWRConfiguration,
-  useToken: boolean = true,
+  useToken: boolean = true
 ): APIResponse<T> => {
   const { data, error, isValidating, mutate } = useSWR<T>(
     url ?? null,
@@ -22,14 +22,14 @@ export const useFetch = <T>(
         url,
         payload?.body,
         {},
-        useToken,
+        useToken
       ),
-    options,
+    options
   );
   return {
     data,
     error,
-    isLoading: !error && !data && url !== "",
+    isLoading: !error && !data && url !== '',
     isValidating,
     mutate,
   };
@@ -39,12 +39,12 @@ export const useInfiniteFetch = <T>(
   SERVICE: string,
   url: string,
   payload?: QueryBody,
-  options?: SWRInfiniteConfiguration,
+  options?: SWRInfiniteConfiguration
 ): APIResponseInfinite<T> => {
   const { data, error, size, setSize, mutate, isValidating } = useSWRInfinite(
-    (page) => urlFormatter(url, page, payload),
-    (url) => fetcher(SERVICE, payload?.method ?? MethodTypes.GET, url),
-    options,
+    page => urlFormatter(url, page, payload),
+    url => fetcher(SERVICE, payload?.method ?? MethodTypes.GET, url),
+    options
   );
 
   const isRefreshing: boolean = isValidating && !!data && data.length === size;
@@ -52,7 +52,7 @@ export const useInfiniteFetch = <T>(
   return {
     data,
     error,
-    isLoading: !error && !data && url !== "",
+    isLoading: !error && !data && url !== '',
     isRefreshing,
     isValidating,
     mutate,
@@ -68,5 +68,5 @@ const urlFormatter = (url: string, page: number, payload?: QueryBody) => {
     offset: (PER_PAGE * page).toString(),
     ...payload?.body,
   };
-  return url + "?" + new URLSearchParams(params).toString();
+  return url + '?' + new URLSearchParams(params).toString();
 };

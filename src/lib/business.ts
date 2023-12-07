@@ -1,11 +1,11 @@
 // import { Company } from "@/components/Registration/YourBusiness/Common/Company.type";
-import { SERVICES } from "@/constants/services";
-import { useFetch } from "@/hooks/useFetch";
-import { fetcher } from "@/lib/https";
-import { APIResponse } from "@/types/http";
-import { MethodTypes } from "@/types/http/methodTypes";
-import { Business, BusinessAddress, BusinessAdmin } from "@/types/models";
-const BUSINESS_URI = "api/v1/business";
+import { SERVICES } from '@/constants/services';
+import { useFetch } from '@/hooks/useFetch';
+import { fetcher } from '@/lib/https';
+import { APIResponse } from '@/types/http';
+import { MethodTypes } from '@/types/http/methodTypes';
+import { Business, BusinessAddress, BusinessAdmin } from '@/types/models';
+const BUSINESS_URI = 'api/v1/business';
 
 type BusinessResponse<T = Business> = {
   userId: string;
@@ -22,9 +22,9 @@ type BusinessResponse<T = Business> = {
  */
 
 export function useBusinessByUser<T>(
-  userId: string,
+  userId: string
 ): APIResponse<BusinessResponse<T>> {
-  let uri = "";
+  let uri = '';
   if (userId) {
     uri = `${BUSINESS_URI}?userId=${userId}`;
   }
@@ -38,9 +38,9 @@ export function useBusinessByUser<T>(
  */
 
 export function useBusinessById<T = Business>(
-  businessId: string | undefined,
+  businessId: string | undefined
 ): APIResponse<T> {
-  let uri = "";
+  let uri = '';
   if (businessId) {
     uri = `${BUSINESS_URI}?businessId=${businessId}`;
   }
@@ -51,7 +51,7 @@ export function useBusinessById<T = Business>(
 
 export async function updateBusinessData(
   businessId: string | undefined,
-  payload: Partial<Business | BusinessAddress>,
+  payload: Partial<Business | BusinessAddress>
 ) {
   const data = { ...payload, businessId: businessId };
   return fetcher(SERVICES.BUSINESS, MethodTypes.PUT, BUSINESS_URI, data);
@@ -64,7 +64,7 @@ export async function updateBusinessData(
  */
 export async function deleteBusinessIndustry(
   businessId: string,
-  industryId: string,
+  industryId: string
 ) {
   const uri = `${BUSINESS_URI}?businessId=${businessId}&industryId=${industryId}`;
 
@@ -80,13 +80,13 @@ export const getBusinessByIdCacheKey = (businessId: string) => {
 };
 
 export async function createBusiness(
-  payload: Partial<Business | BusinessAddress>,
+  payload: Partial<Business | BusinessAddress>
 ) {
   return fetcher(SERVICES.BUSINESS, MethodTypes.POST, BUSINESS_URI, payload);
 }
 
 export async function searchBusiness(name: string, region: string) {
-  let uri = "";
+  let uri = '';
   if (name) {
     uri = `${BUSINESS_URI}?company=${name}&region=${region}`;
   }
@@ -95,7 +95,7 @@ export async function searchBusiness(name: string, region: string) {
 
 export async function createBusinessContact(
   businessId: string,
-  payload: BusinessAdmin[],
+  payload: BusinessAdmin[]
 ) {
   return fetcher(SERVICES.BUSINESS, MethodTypes.PUT, BUSINESS_URI, {
     businessId,
@@ -105,7 +105,7 @@ export async function createBusinessContact(
 
 export async function deleteBusinessContact(
   businessId: string,
-  businessContact: string,
+  businessContact: string
 ) {
   const uri = `${BUSINESS_URI}?businessId=${businessId}&contactName=${businessContact}`;
 

@@ -1,11 +1,11 @@
-import { SERVICES } from "@/constants/services";
-import { useFetch } from "@/hooks/useFetch";
-import { fetcher } from "@/lib/https";
-import { APIResponse } from "@/types/http";
-import { MethodTypes } from "@/types/http/methodTypes";
-import { PrivacySettings, User } from "@/types/models";
+import { SERVICES } from '@/constants/services';
+import { useFetch } from '@/hooks/useFetch';
+import { fetcher } from '@/lib/https';
+import { APIResponse } from '@/types/http';
+import { MethodTypes } from '@/types/http/methodTypes';
+import { PrivacySettings, User } from '@/types/models';
 
-const ACCOUNT_URI = "api/v1/account";
+const ACCOUNT_URI = 'api/v1/account';
 
 const LIMIT = 60;
 
@@ -19,7 +19,7 @@ type UserListResponse = {
  * @param email. Email of user
  */
 export function useAccount<User>(email?: string): APIResponse<User> {
-  let uri = "";
+  let uri = '';
 
   if (email) {
     uri = `${ACCOUNT_URI}?username=${email}`;
@@ -41,9 +41,9 @@ export function useUserAccount(): APIResponse<User> {
  */
 
 export function usePrivacySettings(
-  userId: string,
+  userId: string
 ): APIResponse<PrivacySettings> {
-  let uri = "";
+  let uri = '';
   if (userId) {
     uri = `${ACCOUNT_URI}/privacy?userId=${userId}`;
   }
@@ -58,7 +58,7 @@ export function usePrivacySettings(
 
 export async function updateAccountData(
   email: string | undefined,
-  payload: Partial<User>,
+  payload: Partial<User>
 ) {
   const data = { ...payload, username: email };
   return fetcher(SERVICES.ACCOUNT, MethodTypes.PUT, ACCOUNT_URI, data);
@@ -66,9 +66,9 @@ export async function updateAccountData(
 
 export async function updatePrivacyData(
   userId: string,
-  payload: Partial<User>,
+  payload: Partial<User>
 ) {
-  let uri = "";
+  let uri = '';
   if (userId) {
     uri = `${ACCOUNT_URI}/privacy`;
   }
@@ -82,7 +82,7 @@ export async function updatePrivacyData(
  */
 
 export function useAccountById(userId: string): APIResponse<User> {
-  let uri = "";
+  let uri = '';
   if (userId) {
     uri = `${ACCOUNT_URI}?userId=${userId}`;
   }
@@ -101,9 +101,9 @@ export function useSearchUser(
   key: string,
   value: string,
   limit = LIMIT,
-  offset = 0,
+  offset = 0
 ): APIResponse<UserListResponse> {
-  let uri = "";
+  let uri = '';
   if (key && value) {
     uri = `${ACCOUNT_URI}?${key}=${value}&limit=${limit}&offset=${offset}`;
   }
@@ -111,7 +111,7 @@ export function useSearchUser(
 }
 
 export async function checkEmailExists(email: string): Promise<any> {
-  let uri = "";
+  let uri = '';
   if (email) {
     uri = `${ACCOUNT_URI}/check?email=${email}`;
   }
@@ -141,7 +141,7 @@ export async function closeUserAccount(username: string) {
   return fetcher(
     SERVICES.ACCOUNT,
     MethodTypes.DELETE,
-    `${ACCOUNT_URI}?username=${username}`,
+    `${ACCOUNT_URI}?username=${username}`
   );
 }
 
@@ -153,7 +153,7 @@ export async function getAccountByUsername(username: string) {
   return fetcher(
     SERVICES.ACCOUNT,
     MethodTypes.GET,
-    `${ACCOUNT_URI}/?username=${username}`,
+    `${ACCOUNT_URI}/?username=${username}`
   );
 }
 
@@ -161,6 +161,6 @@ export async function getPrivacySettings(userId: string) {
   return fetcher(
     SERVICES.ACCOUNT,
     MethodTypes.GET,
-    `${ACCOUNT_URI}/privacy?userId=${userId}`,
+    `${ACCOUNT_URI}/privacy?userId=${userId}`
   );
 }

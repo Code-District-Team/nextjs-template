@@ -1,6 +1,6 @@
-import { SERVICES } from "@/constants/services";
-import { useFetch } from "@/hooks/useFetch";
-import { APIResponse } from "@/types/http";
+import { SERVICES } from '@/constants/services';
+import { useFetch } from '@/hooks/useFetch';
+import { APIResponse } from '@/types/http';
 
 export type Province = {
   code: string;
@@ -11,7 +11,7 @@ export type Provinces = {
   [key: string]: Province[];
 };
 
-export function useProvinces(language: string = "en"): APIResponse<Provinces> {
+export function useProvinces(language: string = 'en'): APIResponse<Provinces> {
   return useFetch(
     SERVICES.AREAS,
     `provinces/provinces.${language}.json`,
@@ -20,6 +20,6 @@ export function useProvinces(language: string = "en"): APIResponse<Provinces> {
       revalidateIfStale: false,
       revalidateOnFocus: false,
     },
-    false,
+    false
   );
 }

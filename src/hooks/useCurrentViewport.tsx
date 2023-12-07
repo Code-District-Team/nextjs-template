@@ -1,41 +1,40 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 import { viewportSizes } from '@/constants';
-import { breakpoint, sizeByMedia } from "@/types/models";
+import { breakpoint, sizeByMedia } from '@/types/models';
 
 import { useWindowSize } from './useWindowSize';
 
-
 export function useCurrentViewport(viewports: sizeByMedia = {}): breakpoint {
-    const { width: windowSize } = useWindowSize()
-    const [breakpoint, setBreakpoint] = useState<breakpoint>('none');
+  const { width: windowSize } = useWindowSize();
+  const [breakpoint, setBreakpoint] = useState<breakpoint>('none');
 
-    const breakpointsKey = Object.keys(viewports)
+  const breakpointsKey = Object.keys(viewports);
 
-    useEffect(() => {
-        const breaks = Object.entries(viewportSizes).filter(
-            viewport => breakpointsKey.includes(viewport[0])
-        );
+  useEffect(() => {
+    const breaks = Object.entries(viewportSizes).filter(viewport =>
+      breakpointsKey.includes(viewport[0])
+    );
 
-        const getCurrentBreakpoint = () => {
-            const validBreaks = breaks.map(([key, value]) => {
-                return {
-                    key: key as breakpoint,
-                    value: windowSize - value,
-                }
-            })
-                .filter(media => media.value >= 0)
-                .sort((media1, media2) => media1.value - media2.value)
+    const getCurrentBreakpoint = () => {
+      const validBreaks = breaks
+        .map(([key, value]) => {
+          return {
+            key: key as breakpoint,
+            value: windowSize - value,
+          };
+        })
+        .filter(media => media.value >= 0)
+        .sort((media1, media2) => media1.value - media2.value);
 
-            const selectedBreakpoint = validBreaks.length > 0
-                ? validBreaks[0].key
-                : 'none';
+      const selectedBreakpoint =
+        validBreaks.length > 0 ? validBreaks[0].key : 'none';
 
-            setBreakpoint(selectedBreakpoint);
-        }
+      setBreakpoint(selectedBreakpoint);
+    };
 
-        getCurrentBreakpoint();
-    }, [windowSize]);
+    getCurrentBreakpoint();
+  }, [windowSize]);
 
-    return breakpoint;
+  return breakpoint;
 }

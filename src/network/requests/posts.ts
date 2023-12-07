@@ -1,6 +1,6 @@
-import K from "../../constants";
-import { store } from "../../store";
-import Request from ".";
+import K from '../../constants';
+import { store } from '../../store';
+import Request from '.';
 
 export default class PostRequest extends Request {
   constructor(params: any) {
@@ -18,7 +18,7 @@ export default class PostRequest extends Request {
       K.Network.Method.GET,
       null,
       K.Network.Header.Type.Json,
-      {},
+      {}
       // auth.loggedInUser?.token
     );
   }
