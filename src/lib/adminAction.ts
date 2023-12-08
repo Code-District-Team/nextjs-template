@@ -12,8 +12,6 @@ export const flag = (index: number, scope: Scope): void => {
 };
 export const systemMessage = (index: number, scope: Scope): void => {
   // TODO: integrate with backend
-  index;
-  scope;
 };
 
 export const filterBy = (filters: Filters, scope: Scope): void => {

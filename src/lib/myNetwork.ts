@@ -9,7 +9,7 @@ import { PrivacySetting, User } from '@/types/models';
 
 export const setMenusWithBadges = (setMenus: Function, badge: string, selectedMenu: number) => {
   // Set the menus without waiting for the badge value
-  MY_NETWORK_MENUS.map((menu, index) => (menu.selected = index == selectedMenu));
+  MY_NETWORK_MENUS.forEach((menu, index) => (menu.selected = index == selectedMenu));
   setMenus(MY_NETWORK_MENUS);
 
   // Set the badge value

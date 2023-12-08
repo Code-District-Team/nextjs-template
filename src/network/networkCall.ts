@@ -1,3 +1,6 @@
+import { permanentRedirect } from 'next/navigation';
+import { toast } from 'react-hot-toast';
+
 import K from '@/constants';
 
 interface IRequest {
@@ -57,25 +60,33 @@ export default class NetworkCall {
 
   private static async handleResponseStatus(response: Response): Promise<void> {
     const statusCode = K.Network.StatusCode;
+    const errorMessages = K.Network.ErrorMessages;
     const responseStatus = response.status;
 
     switch (responseStatus) {
       case statusCode.Successful:
+        toast.success(errorMessages.Successful);
         return; // Successful response, no action needed
       case statusCode.BadRequest:
+        toast.error(errorMessages.BadRequest);
         // Handle bad request
         break;
       case statusCode.Unauthorized:
         // Logout or redirect
+        // permanentRedirect("/unauthorized");
+        toast.error(errorMessages.Unauthorized);
         throw new Error('Unauthorized');
       case statusCode.Forbidden:
         // Redirect to Forbidden Fallback UI
+        toast.error(errorMessages.Forbidden);
+        permanentRedirect('/unauthorized');
         break;
       case statusCode.ServerError:
-        console.error('Server error');
+        toast.error(errorMessages.ServerError);
         // Redirect to Server Error Fallback UI
         break;
       default:
+        toast.error(`${responseStatus} - ${response.statusText}`);
         throw new Error(`Error: ${responseStatus} - ${response.statusText}`);
     }
   }
