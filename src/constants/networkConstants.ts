@@ -59,5 +59,13 @@ const NetworkConstants = {
     NotFound: 404,
     ServerError: 500,
   },
+  ErrorMessages: {
+    Successful: 'Operation Successful!',
+    BadRequest: 'Bad Request',
+    Unauthorized: 'Unauthorized',
+    Forbidden: 'Forbidden Resource',
+    NotFound: 'Not Found',
+    ServerError: 'Internal Server Error',
+  },
 };
 export default NetworkConstants;

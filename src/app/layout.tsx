@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
+import { Toaster } from 'react-hot-toast';
 
 import ThemeRegistry from '../lib/muiRegistry';
 import { Providers } from '../store/storeProvider';
@@ -16,9 +17,8 @@ export default function RootLayout({ children }: { readonly children: React.Reac
   return (
     <html lang="en">
       <body className={inter.className}>
-        {' '}
+        <Toaster position='top-center' />
         <ThemeRegistry options={{ key: 'mui' }}>
-          {' '}
           <>
             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
               <Link href="/">Home</Link>
