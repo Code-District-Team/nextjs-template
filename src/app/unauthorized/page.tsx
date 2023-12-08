@@ -1,12 +1,7 @@
 "use client";
 import { Button, Paper, Stack, Typography } from '@mui/material';
-import { useRouter } from 'next/navigation'
-
-export let router: any = null;
 
 const ForbiddenMessage = () => {
-  router = useRouter();
-
   return (
     <Paper elevation={3} style={{ margin: '20px', padding: '20px', textAlign: 'center' }}>
       <Typography variant="h5" gutterBottom>
