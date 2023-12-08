@@ -34,10 +34,7 @@ export enum BUSINESS_STATUS {
 
 export const getAllowedBusinessStatus = (tab: string) => {
   return {
-    [BUSINESS_STATUS.ACTIVE]: [
-      BUSINESS_STATUS.ACTIVE,
-      BUSINESS_STATUS.PROSPECT,
-    ],
+    [BUSINESS_STATUS.ACTIVE]: [BUSINESS_STATUS.ACTIVE, BUSINESS_STATUS.PROSPECT],
     [BUSINESS_STATUS.COLD]: [
       BUSINESS_STATUS.ACTIVE,
       BUSINESS_STATUS.PROSPECT,
@@ -59,14 +56,7 @@ export const MY_NETWORK_FILTERS: MyNetworkFiltersType = {
   accounts: {
     folderUri: BUSINESS_LEADS_URI,
     name: 'accounts',
-    sorts: [
-      'name',
-      'date',
-      'customer_rating',
-      'revenue',
-      'followers',
-      'endorsements',
-    ],
+    sorts: ['name', 'date', 'customer_rating', 'revenue', 'followers', 'endorsements'],
     tab: 'business',
     views: [
       'view_all',
@@ -108,14 +98,7 @@ export const MY_NETWORK_FILTERS: MyNetworkFiltersType = {
   peoplelists: {
     folderUri: ACCOUNTS_URI,
     name: 'people_lists',
-    sorts: [
-      'name',
-      'date',
-      'customer_rating',
-      'revenue',
-      'followers',
-      'endorsements',
-    ],
+    sorts: ['name', 'date', 'customer_rating', 'revenue', 'followers', 'endorsements'],
     tab: 'people',
     views: [
       'view_all',
@@ -129,14 +112,7 @@ export const MY_NETWORK_FILTERS: MyNetworkFiltersType = {
   },
   view_business: {
     name: 'view_business',
-    sorts: [
-      'name',
-      'date',
-      'customer_rating',
-      'revenue',
-      'followers',
-      'endorsements',
-    ],
+    sorts: ['name', 'date', 'customer_rating', 'revenue', 'followers', 'endorsements'],
     tab: 'search',
     views: [
       'view_all',

@@ -96,8 +96,7 @@ export async function fetcher(
     headers = {
       ...headers,
       Authorization: `Bearer ${token}`,
-      'Content-Type':
-        typeof params === 'string' ? 'text/plain' : 'application/json',
+      'Content-Type': typeof params === 'string' ? 'text/plain' : 'application/json',
       mode: 'cors',
     };
   }
@@ -108,11 +107,7 @@ export async function fetcher(
     body = null;
   }
   // Stringify params unless it's form-data (files)
-  else if (
-    params &&
-    headers &&
-    headers['Content-Type'] !== 'multipart/form-data'
-  ) {
+  else if (params && headers && headers['Content-Type'] !== 'multipart/form-data') {
     body = JSON.stringify(params);
   }
 
@@ -183,11 +178,9 @@ export async function fileS3Uploader(
     }) as any;
 
     const data: any = {};
-    Object.entries(parsedResponse.PostResponse).forEach(
-      ([key, value]: [string, any]) => {
-        data[key] = value._text;
-      }
-    );
+    Object.entries(parsedResponse.PostResponse).forEach(([key, value]: [string, any]) => {
+      data[key] = value._text;
+    });
 
     return handleSuccess(response, data) as FileAPIResponse;
   } catch (error) {

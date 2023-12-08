@@ -30,9 +30,7 @@ export function useDirectories(): APIResponse<DirectoryResponse> {
  * Get Filter conversations
  */
 
-export function useFilter(
-  filter: string | null
-): APIResponse<ConversationResponse> {
+export function useFilter(filter: string | null): APIResponse<ConversationResponse> {
   let uri = '';
   if (filter) {
     uri = `${CONV_URI}/${filter}`;
@@ -44,9 +42,7 @@ export function useFilter(
  * Get conversations of folder
  */
 
-export function useConversations(
-  folder: string | undefined
-): APIResponse<ConversationResponse> {
+export function useConversations(folder: string | undefined): APIResponse<ConversationResponse> {
   let uri = '';
   if (folder) {
     uri = `${CONV_URI}?path=${folder}`;
@@ -58,9 +54,7 @@ export function useConversations(
  * Get conversations of folder
  */
 
-export function useConversationById(
-  id: string
-): APIResponse<ConversationResponse> {
+export function useConversationById(id: string): APIResponse<ConversationResponse> {
   let uri = '';
   if (id) {
     uri = `${CONV_URI}?id=${id}`;
@@ -72,9 +66,7 @@ export function useConversationById(
  * Search conversations in all folders
  */
 
-export function useSearchConversations(
-  term: string
-): APIResponse<ConversationResponse> {
+export function useSearchConversations(term: string): APIResponse<ConversationResponse> {
   let uri = '';
   if (term) {
     uri = `${CONV_URI}?term=${term}`;
@@ -107,9 +99,7 @@ export function useConversationMessages(
  * Get conversations by id
  */
 
-export function useConversation(
-  conversationId: string | null
-): APIResponse<ConversationResponse> {
+export function useConversation(conversationId: string | null): APIResponse<ConversationResponse> {
   let uri = '';
   if (conversationId) {
     uri = `${CONV_URI}?id=${conversationId}`;
@@ -215,10 +205,7 @@ export function markConversationUnFlagged(payload: { conversationId: string }) {
  * Marks conversation as read
  * @param payload
  */
-export function markConversationRead(payload: {
-  conversationId: string;
-  timestamp: Date;
-}) {
+export function markConversationRead(payload: { conversationId: string; timestamp: Date }) {
   const uri = CONV_URI + '/read';
 
   return fetcher(SERVICES.CHAT, MethodTypes.POST, uri, payload);
@@ -228,10 +215,7 @@ export function markConversationRead(payload: {
  * Rename conversation title
  * @param payload
  */
-export function renameConversationTitle(payload: {
-  conversationId: string;
-  title: string;
-}) {
+export function renameConversationTitle(payload: { conversationId: string; title: string }) {
   const uri = CONV_URI + '/rename';
 
   return fetcher(SERVICES.CHAT, MethodTypes.POST, uri, payload);
@@ -249,11 +233,7 @@ export const getDirectoryCacheKey = () => {
  * Return SWR cache key after post request to invalidate the cache
  * @param businessId
  */
-export const getMessagesCacheKey = (
-  conversationId: string,
-  nextPageKey: string,
-  limit = LIMIT
-) => {
+export const getMessagesCacheKey = (conversationId: string, nextPageKey: string, limit = LIMIT) => {
   let pageKeyStr = '';
   if (nextPageKey) {
     pageKeyStr = `&pageKey=${nextPageKey}`;

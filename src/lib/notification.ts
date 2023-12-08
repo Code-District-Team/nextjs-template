@@ -24,14 +24,9 @@ export type notificationApiResponse = {
  * Read User's notifications
  */
 export function useNotifications(): APIResponse<notificationApiResponse> {
-  return useFetch<any>(
-    SERVICES.NOTIFICATION,
-    '/api/v1/user-notification',
-    undefined,
-    {
-      revalidateOnFocus: false,
-    }
-  );
+  return useFetch<any>(SERVICES.NOTIFICATION, '/api/v1/user-notification', undefined, {
+    revalidateOnFocus: false,
+  });
 }
 
 /**

@@ -15,15 +15,7 @@ export const useFetch = <T>(
 ): APIResponse<T> => {
   const { data, error, isValidating, mutate } = useSWR<T>(
     url ?? null,
-    () =>
-      fetcher(
-        service,
-        payload?.method ?? MethodTypes.GET,
-        url,
-        payload?.body,
-        {},
-        useToken
-      ),
+    () => fetcher(service, payload?.method ?? MethodTypes.GET, url, payload?.body, {}, useToken),
     options
   );
   return {

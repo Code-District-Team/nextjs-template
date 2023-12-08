@@ -8,8 +8,7 @@ export default class Storage {
   private readonly storage: IStorage | null;
 
   public constructor(
-    getStorage = (): IStorage | null =>
-      typeof window !== 'undefined' ? localStorage : null
+    getStorage = (): IStorage | null => (typeof window !== 'undefined' ? localStorage : null)
   ) {
     this.storage = getStorage();
   }

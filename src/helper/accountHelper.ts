@@ -9,9 +9,7 @@ import {
   User,
 } from '@/types/models';
 
-export const getContactInfo = (
-  user: User | undefined
-): Partial<Contact> | undefined => {
+export const getContactInfo = (user: User | undefined): Partial<Contact> | undefined => {
   if (user) {
     return {
       about: user.about,
@@ -39,9 +37,7 @@ export const getContactInfo = (
   }
 };
 
-export const getSocialLinks = (
-  user: User | undefined
-): Partial<SocialMediaLinks> | undefined => {
+export const getSocialLinks = (user: User | undefined): Partial<SocialMediaLinks> | undefined => {
   if (user) {
     return {
       facebook: user.facebook,
@@ -74,9 +70,7 @@ export const getBuyerIntent = (user: User): BuyerIntent | undefined => {
   }
 };
 
-export const getProfilePreview = (
-  user: User | undefined
-): ProfilePreview | undefined => {
+export const getProfilePreview = (user: User | undefined): ProfilePreview | undefined => {
   if (user) {
     return {
       viewActivity: user.viewActivity,

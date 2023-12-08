@@ -1,8 +1,6 @@
 import { BizProfile, Business, BusinessSocialMediaLinks } from '@/types/models';
 
-export const getBusinessInfo = (
-  business: Business | undefined
-): Business | undefined => {
+export const getBusinessInfo = (business: Business | undefined): Business | undefined => {
   if (business) {
     return {
       address: {
