@@ -3,6 +3,6 @@ module.exports = {
     // `yarn lint ${filenames.join(' ')}`,
     'yarn build',
     `yarn format ${filenames.join(' ')}`,
-    'git add src/',
+    `git add ${filenames.join(' ')}`,
   ],
 };

@@ -3,7 +3,10 @@ import { deleteCookie, getCookie, getCookies, hasCookie, setCookie } from 'cooki
 let cookies: () => ReadonlyRequestCookies;
 import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 
-import { isServer } from './utils';
+// import { isServer } from './utils';
+export const isServer = () => {
+  return typeof window === 'undefined' && typeof global !== 'undefined';
+};
 
 if (isServer()) {
   // This code runs on the server only

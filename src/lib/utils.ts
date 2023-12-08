@@ -1,6 +1,8 @@
 import { Area } from 'react-easy-crop';
 
 import { Province, Provinces } from '@/lib/location';
+import { getaCookie } from './cookies';
+import { cookieKeys } from '@/constants/cookiePreferences';
 
 export function Capitalize(value: string): string {
   let newValue = value
@@ -118,4 +120,14 @@ export const escapeNewLine = (str?: string) => {
 
 export const isServer = () => {
   return typeof window === 'undefined' && typeof global !== 'undefined';
+};
+
+export const isUserAuthenticated = () => {
+  const userCookie = getaCookie(cookieKeys.auth);
+
+  // Check userCookie is a string and not undefined
+  if (typeof userCookie === 'string') {
+    const user = JSON.parse(userCookie);
+    return !!user?.token;
+  }
 };
