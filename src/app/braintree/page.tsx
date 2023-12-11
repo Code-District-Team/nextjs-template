@@ -1,4 +1,4 @@
-import BraintreeDropin from '@/components/BraintreeDropin';
+import BraintreeDropin from '@/components/braintreeDropin';
 
 const BrainTree = () => {
   return (
