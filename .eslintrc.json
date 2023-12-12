@@ -1,8 +1,9 @@
 {
   "extends": [
     "next/core-web-vitals"
-    // "eslint:recommended",
-    // "plugin:react/recommended",
+    // "eslint:recommended"
+
+    // "plugin:react/recommended"
     // "plugin:jest/recommended"
   ],
   "overrides": [
@@ -18,7 +19,7 @@
     "react/prop-types": 2,
     "no-await-in-loop": 2,
     "no-empty": 2, // no empty blocks like catch(err){}
-    "no-useless-escape": 1, // disallows unnecessary escape characters
+    "no-useless-escape": 0, // disallows unnecessary escape characters
     "no-debugger": 2,
     "no-console": 1,
     "no-unused-vars": [
@@ -28,7 +29,8 @@
       2,
       {
         "rule": "camelCase",
-        "excepts": ["^(?!.*global-error.tsx).*"]
+        "excepts": ["^(?!src/app).*"]
+        // "excepts":["global-error.tsx"]
       }
     ],
     "react/sort-comp": [

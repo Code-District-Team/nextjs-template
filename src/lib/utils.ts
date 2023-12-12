@@ -116,7 +116,7 @@ export const truncate = (str: string, num: number) => {
 };
 
 export const escapeNewLine = (str?: string) => {
-  return !!str ? str.replace(/[\\]*\\n/g, '\n') : str;
+  return str ? str.replace(/[\\]*\\n/g, '\n') : str;
 };
 
 export const isServer = () => {
