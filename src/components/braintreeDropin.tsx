@@ -13,7 +13,7 @@ const BraintreeDropin: React.FC = () => {
     // Fetch client token from your API
     fetch('/api/braintree/getClientToken')
       .then(response => {
-        return response.json();
+        return response?.json();
       })
       .then(data => {
         setClientToken(data.clientToken);
