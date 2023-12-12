@@ -22,6 +22,7 @@ export default function RootLayout({ children }: { readonly children: React.Reac
           <>
             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
               <Link href="/">Home</Link>
+              <Link href="/testing">Test Page</Link>
               <Link href="/posts">Posts</Link>
               <Link href="/redux">Redux Counter</Link>
               <Link href="/mui">Mui</Link>
