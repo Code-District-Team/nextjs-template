@@ -1,10 +1,9 @@
 {
   "extends": [
-    "next/core-web-vitals"
-    // "eslint:recommended"
-
-    // "plugin:react/recommended"
-    // "plugin:jest/recommended"
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jest/recommended"
   ],
   "overrides": [
     {
@@ -33,6 +32,7 @@
         // "excepts":["global-error.tsx"]
       }
     ],
+    "react/react-in-jsx-scope": 0,
     "react/sort-comp": [
       2,
       {
