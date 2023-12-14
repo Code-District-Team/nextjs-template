@@ -13,7 +13,7 @@ import { fetcher, query } from '@/lib/https';
 // import { t } from "@/pages/_app"; // TODO: Need to integrate next-translation
 import { APIBulkResponse, APIResponse, ContactResponse, GroupResponse } from '@/types/http';
 import { MethodTypes } from '@/types/http/methodTypes';
-import { User } from '@/types/models';
+// import { User } from '@/types/models';
 
 export const PER_PAGE = 10;
 

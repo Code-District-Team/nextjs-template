@@ -6,6 +6,7 @@ import '@ag-grid-community/styles/ag-theme-alpine.css';
 
 import { ColDef } from 'ag-grid-community';
 import { AgGridReact } from 'ag-grid-react';
+import React from 'react';
 
 // Define the column definitions type
 type ColumnDefs = ColDef[];

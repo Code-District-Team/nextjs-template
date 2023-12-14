@@ -33,7 +33,7 @@ export function useCurrentViewport(viewports: sizeByMedia = {}): breakpoint {
     };
 
     getCurrentBreakpoint();
-  }, [windowSize]);
+  }, [windowSize, breakpointsKey]);
 
   return breakpoint;
 }

@@ -1,8 +1,9 @@
 import { Area } from 'react-easy-crop';
 
-import { Province, Provinces } from '@/lib/location';
-import { getaCookie } from './cookies';
 import { cookieKeys } from '@/constants/cookiePreferences';
+import { Province, Provinces } from '@/lib/location';
+
+import { getaCookie } from './cookies';
 
 export function Capitalize(value: string): string {
   let newValue = value
@@ -115,7 +116,7 @@ export const truncate = (str: string, num: number) => {
 };
 
 export const escapeNewLine = (str?: string) => {
-  return !!str ? str.replace(/[\\]*\\n/g, '\n') : str;
+  return str ? str.replace(/[\\]*\\n/g, '\n') : str;
 };
 
 export const isServer = () => {

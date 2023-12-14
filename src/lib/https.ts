@@ -118,6 +118,7 @@ export async function fetcher(
   };
 
   // If the request is for service discovery, then service urls are not needed
+  // eslint-disable-next-line no-useless-catch
   try {
     if (SERVICE) {
       serviceUrl = (await serviceDiscovery.get(SERVICE)) as string;

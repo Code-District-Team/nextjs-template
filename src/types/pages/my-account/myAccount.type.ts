@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Invoice } from '@/types/models';
 
 export type MyAccountProps = {
