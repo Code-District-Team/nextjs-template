@@ -14,8 +14,10 @@ interface IRequest {
 export default class NetworkCall {
   static async makeApiCall<T>(
     request: IRequest,
+    // eslint-disable-next-line no-undef
     cacheOptions: RequestInit = { cache: 'no-store' }
   ): Promise<T> {
+    // eslint-disable-next-line no-undef
     const options: RequestInit = {
       method: request.method,
       headers: {
