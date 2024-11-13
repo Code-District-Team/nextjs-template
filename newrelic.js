@@ -11,7 +11,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['yoogo'],
+  app_name: ['Next-Boilerplate'],
   /**
    * Your New Relic license key.
    */

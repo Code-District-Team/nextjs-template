@@ -11,12 +11,12 @@ import { Providers } from '../store/storeProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.yoogo.com'),
+  metadataBase: new URL('https://www.next-boilerplate.com'),
   title: {
-    default: 'Yoogo',
-    template: `%s | Yoogo`,
+    default: 'Next-Boilerplate',
+    template: `%s | Next-Boilerplate`,
   },
-  description: 'This is the description of Yoogo',
+  description: 'This is the description of Next-Boilerplate',
   verification: {
     google: 'google-site-verification=878787878',
   },
